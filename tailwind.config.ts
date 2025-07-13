@@ -21,6 +21,7 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        pixel: ["'Press Start 2P'", 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",

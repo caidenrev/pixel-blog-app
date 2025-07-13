@@ -2,8 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button, buttonVariants } from "@/components/ui/button"
-import { ModeToggle } from './theme-toggle'
-import { HamburgerMenuIcon } from '@radix-ui/react-icons'
+import { Code, Menu } from 'lucide-react'
 import {
     Sheet,
     SheetContent,
@@ -15,72 +14,175 @@ import {
 import LoadingBar from 'react-top-loading-bar'
 import { usePathname } from 'next/navigation'
 import MobileNav from './mobile-nav'
-import { Menu } from 'lucide-react'
-
-
+import { useTheme } from 'next-themes'
 
 const NavBar = () => {
     const [progress, setProgress] = useState(0)
-    const pathname = usePathname();
-    
-    // This runs whenever page changes to some other page
+    const [isOpen, setIsOpen] = useState(false)
+    const [mounted, setMounted] = useState(false)
+    const pathname = usePathname()
+    const { theme, setTheme } = useTheme()
+
+    // Fix hydration issue
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    // Page change effect
     useEffect(() => {
         setProgress(30)
         
-        setTimeout(() => { 
+        const timer1 = setTimeout(() => { 
             setProgress(70)
-        }, 100);
+        }, 100)
 
-        setTimeout(() => { 
+        const timer2 = setTimeout(() => { 
             setProgress(100)
-        }, 800);
-       
+        }, 800)
+
+        return () => {
+            clearTimeout(timer1)
+            clearTimeout(timer2)
+        }
     }, [pathname])
 
-    // This runs whenever page loads
+    // Reset progress after completion
     useEffect(() => {
-        setTimeout(() => { 
-            setProgress(0)
-        }, 900);
-    }, [])
-    
- 
+        if (progress === 100) {
+            const timer = setTimeout(() => { 
+                setProgress(0)
+            }, 100)
+            return () => clearTimeout(timer)
+        }
+    }, [progress])
+
+    const toggleTheme = () => {
+        if (mounted) {
+            setTheme(theme === 'dark' ? 'light' : 'dark')
+        }
+    }
 
     return (
-        <nav className='h-16 bg-background/50 sticky top-0 border-b px-8 backdrop-blur flex items-center justify-between z-10'>
+        <nav className='z-50 px-4 py-6 bg-background/80 backdrop-blur-md border-b border-border/40 sticky top-0'>
             <LoadingBar
-                color='#6028ff'
+                color='#3b82f6'
                 progress={progress}
                 onLoaderFinished={() => setProgress(0)}
+                height={3}
             />
-            <div className='text-lg font-bold md:text-xl'>
-                <Link href={"/"}>
-                    ProgrammingWithHarry
+            
+            <div className="container mx-auto flex items-center justify-between">
+                {/* Logo */}
+                <Link href="/" className="flex items-center space-x-2 group">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                        <Code className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Pixel Code
+                    </span>
                 </Link>
-            </div>
-            <ul className='hidden md:flex w-full justify-end items-center space-x-4 '>
-                <li><Link href={"/"}>Home</Link></li>
-                <li><Link href={"/about"}>About</Link></li>
-                <li><Link href={"/blog"}>Blog</Link></li>
-                <li><Link href={"/contact"}>Contact</Link></li>
-                <li className="buttons px-4 space-x-2">
-                    <Link href={"/login"} className={buttonVariants({ variant: "outline" })}>Login</Link>
-                    <Link href={"/login"} className={buttonVariants({ variant: "outline" })}>Sign Up</Link>
-                </li>
 
-            </ul>
-            <ModeToggle />
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex items-center space-x-8">
+                    <Link 
+                        href="/" 
+                        className={`hover:text-blue-400 transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full ${
+                            pathname === '/' ? 'text-blue-400 after:w-full' : ''
+                        }`}
+                    >
+                        Home
+                    </Link>
+                    <Link 
+                        href="/about" 
+                        className={`hover:text-blue-400 transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full ${
+                            pathname === '/about' ? 'text-blue-400 after:w-full' : ''
+                        }`}
+                    >
+                        About
+                    </Link>
+                    <Link 
+                        href="/blog" 
+                        className={`hover:text-blue-400 transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full ${
+                            pathname === '/blog' ? 'text-blue-400 after:w-full' : ''
+                        }`}
+                    >
+                        Blog
+                    </Link>
+                    <Link 
+                        href="/contact" 
+                        className={`hover:text-blue-400 transition-colors duration-300 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full ${
+                            pathname === '/contact' ? 'text-blue-400 after:w-full' : ''
+                        }`}
+                    >
+                        Contact
+                    </Link>
+                </div>
 
-            <div className="flex items-center justify-center sm:hidden">
+                {/* Desktop Actions */}
+                <div className="hidden md:flex items-center space-x-4">
+                    {/* Theme Toggle - Only render after mounted */}
+                    {mounted && (
+                        <button 
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full hover:bg-muted/50 transition-colors duration-300 text-2xl"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'dark' ? '☀️' : '🌙'}
+                        </button>
+                    )}
+                    <Link 
+                        href="/login" 
+                        className={`${buttonVariants({ variant: "ghost" })} hover:text-blue-400 transition-colors duration-300`}
+                    >
+                        Login
+                    </Link>
+                    <Link 
+                        href="/signup" 
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                    >
+                        Sign Up
+                    </Link>
+                </div>
 
-              <Sheet>
-                <SheetTrigger><Menu /></SheetTrigger>
-                <SheetContent>
-
-                  <MobileNav />
-
-                </SheetContent>
-              </Sheet>
+                {/* Mobile Actions */}
+                <div className="flex md:hidden items-center space-x-2">
+                    {/* Mobile Theme Toggle */}
+                    {mounted && (
+                        <button 
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full hover:bg-muted/50 transition-colors duration-300 text-xl"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'dark' ? '☀️' : '🌙'}
+                        </button>
+                    )}
+                    
+                    {/* Mobile Menu */}
+                    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                        <SheetTrigger asChild>
+                            <Button variant="ghost" size="icon" className="hover:bg-muted/50">
+                                <Menu className="h-6 w-6" />
+                                <span className="sr-only">Toggle menu</span>
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent className="w-[300px] sm:w-[400px]">
+                            <SheetHeader>
+                                <SheetTitle className="flex items-center space-x-2">
+                                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                                        <Code className="w-5 h-5 text-white" />
+                                    </div>
+                                    <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                        TechForge
+                                    </span>
+                                </SheetTitle>
+                                <SheetDescription className="sr-only">
+                                    Navigation menu
+                                </SheetDescription>
+                            </SheetHeader>
+                            <MobileNav onItemClick={() => setIsOpen(false)} />
+                        </SheetContent>
+                    </Sheet>
+                </div>
             </div>
         </nav>
     )

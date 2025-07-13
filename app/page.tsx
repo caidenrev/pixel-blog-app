@@ -1,127 +1,320 @@
-"use client"
-import Image from "next/image";
-import { useEffect, useRef } from "react";
-import Typed from 'typed.js';
+"use client";
+import React, { useEffect, useRef, useState } from 'react';
+import { Search, Eye, MessageCircle, Code, Smartphone, Cloud, Play, ChevronRight, Star, Zap, Users, Award } from 'lucide-react';
+import { useTheme } from 'next-themes';
 
-export default function Home() {
-  const el = useRef(null);
+const strings = ['Tailwind CSS', 'React', 'TypeScript', 'Next.js'];
 
+export default function ModernTechLanding() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const [currentStringIndex, setCurrentStringIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Fix hydration issue
   useEffect(() => {
-    const typed = new Typed(el.current, {
-      strings: ['<i>Tailwind</i> CSS.', '&amp; React', 'Typescript'],
-      typeSpeed: 50,
-    });
-
-    return () => {
-      // Destroy Typed instance during cleanup to stop animation
-      typed.destroy();
-    };
+    setMounted(true);
   }, []);
 
+  // Typing animation
+  useEffect(() => {
+    if (!mounted) return;
+
+    const timer = setTimeout(() => {
+      const currentString = strings[currentStringIndex];
+      if (!isDeleting && currentCharIndex < currentString.length) {
+        setTypedText(currentString.slice(0, currentCharIndex + 1));
+        setCurrentCharIndex(prev => prev + 1);
+      } else if (isDeleting && currentCharIndex > 0) {
+        setTypedText(currentString.slice(0, currentCharIndex - 1));
+        setCurrentCharIndex(prev => prev - 1);
+      } else if (!isDeleting && currentCharIndex === currentString.length) {
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && currentCharIndex === 0) {
+        setIsDeleting(false);
+        setCurrentStringIndex(prev => (prev + 1) % strings.length);
+      }
+    }, isDeleting ? 50 : 100);
+    
+    return () => clearTimeout(timer);
+  }, [currentCharIndex, isDeleting, currentStringIndex, mounted]);
+
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
+
+  const services = [
+    {
+      id: 'web-dev',
+      category: 'WEB DEVELOPMENT',
+      title: 'Full-Stack Solutions',
+      description: 'Building robust, scalable, and responsive web applications using modern tech stacks like React, Node.js, and more.',
+      icon: <Code className="w-6 h-6" />,
+      views: '2.4K',
+      comments: '32'
+    },
+    {
+      id: 'mobile-dev',
+      category: 'MOBILE DEVELOPMENT',
+      title: 'Cross-Platform Apps',
+      description: 'Crafting seamless mobile experiences for both Android and iOS using frameworks like React Native and Flutter.',
+      icon: <Smartphone className="w-6 h-6" />,
+      views: '1.8K',
+      comments: '18'
+    },
+    {
+      id: 'cloud-solutions',
+      category: 'CLOUD SOLUTIONS',
+      title: 'Scalable Infrastructure',
+      description: 'Implementing and managing cloud environments with AWS, Azure, and GCP to ensure your applications scale effortlessly.',
+      icon: <Cloud className="w-6 h-6" />,
+      views: '3.1K',
+      comments: '24'
+    }
+  ];
+
+  const stats = [
+    { number: '50K+', label: 'Active Learners', icon: <Users className="w-6 h-6" /> },
+    { number: '1M+', label: 'Lessons Completed', icon: <Play className="w-6 h-6" /> },
+    { number: '100+', label: 'Expert Instructors', icon: <Award className="w-6 h-6" /> },
+    { number: '95%', label: 'Success Rate', icon: <Star className="w-6 h-6" /> }
+  ];
 
   return (
-    <main>
-      <section className="container px-4 py-10 mx-auto lg:h-128 lg:space-x-8 lg:flex lg:items-center"><div className="w-full text-center lg:text-left lg:w-1/2 lg:-mt-8"><h1 className="text-3xl leading-snug text-gray-800 dark:text-gray-200 md:text-4xl">
-        A <span className="font-semibold">tech blog</span> for community <br className="hidden lg:block" /> components using <span className="font-semibold underline decoration-primary"><span ref={el} /></span></h1> <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">Open source blog and templates to <br className="hidden lg:block" /> bootstrap your new apps, projects or landing sites!</p> <div className="mt-6 bg-transparent border rounded-lg dark:border-gray-700 lg:w-2/3 focus-within:border-primary focus-within:ring focus-within:ring-primary dark:focus-within:border-primary focus-within:ring-opacity-20"><form action="https://www.creative-tim.com/twcomponents/search" className="flex flex-wrap justify-between md:flex-row">
+    <div className={`min-h-screen transition-all duration-300 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+      {/* Animated background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-pink-600/10 dark:from-blue-600/10 dark:via-purple-600/5 dark:to-pink-600/10"></div>
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400 rounded-full animate-pulse"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 2}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+      </div>
 
-          <input type="search" name="query" placeholder="Search Components" required={true} className="flex-1 h-10 px-4 m-1 text-gray-700 placeholder-gray-400 bg-transparent border-none appearance-none lg:h-12 dark:text-gray-200 focus:outline-none focus:placeholder-transparent focus:ring-0" />
-
-          <button type="submit" className="flex items-center dark:bg-gray-800 justify-center w-full p-2 m-1 text-white transition-colors duration-300 transform rounded-lg lg:w-12 lg:h-12 lg:p-0 bg-primary hover:bg-primary/70 focus:outline-none focus:bg-primary/70"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button></form></div></div> <div className="w-full mt-4 lg:mt-0 lg:w-1/2"><img src="https://www.creative-tim.com/twcomponents/svg/website-designer-bro-purple.svg" alt="tailwind css components" className="w-full h-full max-w-md mx-auto" /></div>
-      </section>
-
-
-      <section className="text-gray-600 dark:text-gray-50 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <h2 className="text-4xl pb-8 mb-4 font-bold  text-center">About Our Services</h2>
-          <div className="flex flex-wrap -m-4">
-            <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-gray-200 dark:bg-gray-900 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-lg">
-                <h2 className="tracking-widest text-xs title-font font-medium  mb-1">WEB DEVELOPMENT</h2>
-                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 dark:text-white mb-3">Full-Stack Solutions</h1>
-                <p className="leading-relaxed mb-3 text-gray-700 dark:text-gray-50  ">
-                  Building robust, scalable, and responsive web applications using modern tech stacks like React, Node.js, and more.
-                </p>
-                <a className=" inline-flex items-center hover:text-indigo-700">Learn More
-                  <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <div className="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
-                  <span className="text-gray-400 dark:text-gray-500 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                    <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>2.4K Views
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-500 inline-flex items-center leading-none text-sm">
-                    <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>32 Comments
-                  </span>
-                </div>
+      {/* Hero Section */}
+      <section className="relative z-10 container mx-auto px-4 py-20">
+        <div className="lg:flex lg:items-center lg:space-x-12">
+          <div className="lg:w-1/2 space-y-8">
+            {/* Badge */}
+            <div className="inline-flex items-center space-x-2 bg-blue-100 dark:bg-blue-600/20 border border-blue-200 dark:border-blue-500/30 rounded-full px-4 py-2 backdrop-blur-sm">
+              <Zap className="w-4 h-4 text-blue-500 dark:text-blue-400" />
+              <span className="text-sm font-medium text-blue-500 dark:text-blue-400">By Pixel Rhythm Society Community</span>
+            </div>
+            
+            {/* Main heading */}
+            <div className="space-y-4">
+              <h1 className="text-4xl lg:text-5xl font-bold font-pixel leading-tight">
+                Belajar
+                <br />
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+                  Programming
+                </span>
+                <br />
+                Gak perlu mikirin <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+                  Biaya </span> Mahal!
+              </h1>
+              <div className="text-sm lg:text-xl font-pixel">
+                <span className="text-gray-500 dark:text-gray-400">Dibuat Menggunakan </span>
+                <span className="font-semibold text-blue-500 dark:text-blue-400 border-b-2 border-blue-500 dark:border-blue-400">
+                  {typedText}
+                  <span className="animate-pulse">|</span>
+                </span>
               </div>
             </div>
-            <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-gray-200 dark:bg-gray-900 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-lg">
-                <h2 className="tracking-widest text-xs title-font font-medium  mb-1">MOBILE DEVELOPMENT</h2>
-                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 dark:text-white mb-3">Cross-Platform Apps</h1>
-                <p className="leading-relaxed mb-3 text-gray-700 dark:text-gray-400">
-                  Crafting seamless mobile experiences for both Android and iOS using frameworks like React Native and Flutter.
-                </p>
-                <a className=" inline-flex items-center hover:text-indigo-700">Learn More
-                  <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <div className="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
-                  <span className="text-gray-400 dark:text-gray-500 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                    <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>1.8K Views
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-500 inline-flex items-center leading-none text-sm">
-                    <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>18 Comments
-                  </span>
+            
+            {/* Description */}
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-xl">
+              Belajar coding gak perlu ribet mikirin biaya yang mahal. Di sini, kamu bisa belajar berbagai bahasa pemrograman dan teknologi terbaru secara gratis! Dari dasar-dasar HTML, CSS, JavaScript, hingga framework modern seperti React dan Next.js, semua tersedia untuk kamu eksplorasi.
+            </p>
+            
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4">
+              <button className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg text-white text-xs lg:text-sm font-pixel">
+                <div className="flex items-center space-x-2">
+                  <Play className="w-5 h-5" />
+                  <span>Start Learning Free</span>
                 </div>
-              </div>
+              </button>
+              <button className="font-pixel text-xs lg:text-sm group border border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-900 dark:text-white">
+                <div className="flex items-center space-x-2">
+                  <span>Browse Lessons</span>
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </button>
             </div>
-            <div className="p-4 lg:w-1/3">
-              <div className="h-full bg-gray-200 dark:bg-gray-900 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative shadow-lg">
-                <h2 className="tracking-widest text-xs title-font font-medium  mb-1">CLOUD SOLUTIONS</h2>
-                <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 dark:text-white mb-3">Scalable Infrastructure</h1>
-                <p className="leading-relaxed mb-3 text-gray-700 dark:text-gray-400">
-                  Implementing and managing cloud environments with AWS, Azure, and GCP to ensure your applications scale effortlessly.
-                </p>
-                <a className=" inline-flex items-center hover:text-indigo-700">Learn More
-                  <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="M12 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-                <div className="text-center mt-2 leading-none flex justify-center absolute bottom-0 left-0 w-full py-4">
-                  <span className="text-gray-400 dark:text-gray-500 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
-                    <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>3.1K Views
-                  </span>
-                  <span className="text-gray-400 dark:text-gray-500 inline-flex items-center leading-none text-sm">
-                    <svg className="w-4 h-4 mr-1" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
-                    </svg>24 Comments
-                  </span>
+          </div>
+          
+          {/* Hero Image */}
+          <div className="lg:w-1/2 mt-12 lg:mt-0">
+            <div className="relative max-w-2xl mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-200/20 to-purple-200/20 dark:from-blue-500/20 dark:to-purple-600/20 rounded-2xl blur-3xl"></div>
+              <div className="relative bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-14 rounded-3xl border border-gray-200 dark:border-gray-700">
+                <div className="space-y-6">
+                  <div className="flex space-x-3">
+                    <div className="w-4 h-4 bg-red-400 dark:bg-red-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-yellow-300 dark:bg-yellow-500 rounded-full"></div>
+                    <div className="w-4 h-4 bg-green-400 dark:bg-green-500 rounded-full"></div>
+                  </div>
+                  
+                  <div className="space-y-2 font-mono text-lg">
+                    <div>
+                      <span className="text-purple-500">import</span>
+                      <span className="text-blue-500"> React </span>
+                      <span className="text-purple-500">from</span>
+                      <span className="text-green-600"> 'react'</span>
+                      <span className="text-gray-400">;</span>
+                    </div>
+                    <div>
+                      <span className="text-purple-500">export default function</span>
+                      <span className="text-blue-500"> Home</span>
+                      <span className="text-gray-400">() {'{'}</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-purple-500">return</span>
+                      <span className="text-gray-400"> (</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-blue-500">&lt;main</span>
+                      <span className="text-pink-500"> className=</span>
+                      <span className="text-green-600">"flex min-h-screen flex-col items-center justify-between p-24"</span>
+                      <span className="text-blue-500">&gt;</span>
+                    </div>
+                    <div className="pl-12">
+                      <span className="text-blue-500">&lt;h1&gt;</span>
+                      <span className="text-yellow-500">Woi, Join DC!</span>
+                      <span className="text-blue-500">&lt;/h1&gt;</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-blue-500">&lt;/main&gt;</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-400">);</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-400">{'}'}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        {/* Stats */}
+        <div className="mt-20 grid font-pixel grid-cols-2 lg:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <div 
+              key={index}
+              className="text-center p-6 rounded-xl bg-gray-100/80 dark:bg-gray-800/30 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-200/80 dark:hover:bg-gray-800/50 transition-all"
+            >
+              <div className="flex justify-center mb-2 text-blue-500 dark:text-blue-400">
+                {stat.icon}
+              </div>
+              <div className="text-sm font-bold text-blue-500 dark:text-blue-400">{stat.number}</div>
+              <div className="text-xs text-gray-600 dark:text-white">{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </section>
-
-    </main>
+      
+      {/* Services Section */}
+      <section className="relative z-10 container mx-auto px-4 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-2xl font-pixel font-bold mb-4">
+            About Our{' '}
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Services
+            </span>
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Discover our comprehensive range of development services designed to bring your ideas to life
+          </p>
+        </div>
+        
+        <div className="grid lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              className="group relative overflow-hidden rounded-2xl bg-gray-100/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-200/80 dark:hover:bg-gray-800/70 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+              style={{ 
+                animation: `fade-in-up 0.6s ease-out forwards`,
+                animationDelay: `${index * 0.1}s`,
+                opacity: 0
+              }}
+            >
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-100/10 via-purple-100/10 to-pink-100/10 dark:from-blue-500/10 dark:via-purple-500/10 dark:to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <div className="relative p-8 pt-16 pb-20">
+                {/* Category */}
+                <div className="text-xs font-medium tracking-widest text-gray-500 dark:text-gray-400 mb-2">
+                  {service.category}
+                </div>
+                
+                {/* Title */}
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
+                  {service.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-gray-500 dark:text-gray-400 mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+                
+                {/* Learn More Link */}
+                <button className="group/link inline-flex items-center text-blue-500 dark:text-blue-400 hover:text-blue-400 dark:hover:text-blue-300 transition-colors mb-6">
+                  <span>Learn More</span>
+                  <ChevronRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" />
+                </button>
+                
+                {/* Stats at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="flex items-center justify-center space-x-6 text-sm text-gray-400 dark:text-gray-500">
+                    <div className="flex items-center space-x-2">
+                      <div className="p-1 rounded-full bg-gray-200 dark:bg-gray-700">
+                        <Eye className="w-4 h-4" />
+                      </div>
+                      <span>{service.views} Views</span>
+                    </div>
+                    <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
+                    <div className="flex items-center space-x-2">
+                      <div className="p-1 rounded-full bg-gray-200 dark:bg-gray-700">
+                        <MessageCircle className="w-4 h-4" />
+                      </div>
+                      <span>{service.comments} Comments</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <style jsx>{`
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
   );
 }
