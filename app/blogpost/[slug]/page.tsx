@@ -9,6 +9,7 @@ import rehypeStringify from "rehype-stringify"
 import rehypeHighlight from "rehype-highlight"
 import matter from "gray-matter"
 import fs from "fs"
+import path from "path" // <-- Perbaikan 1: Import modul 'path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { rehypePrettyCode } from 'rehype-pretty-code'
 import { transformerCopyButton } from '@rehype-pretty/transformers'
@@ -38,7 +39,8 @@ export default async function BlogPage({ params }: { params: { slug: string } })
     })
     .use(rehypeAutolinkHeadings)
 
-  const filePath = `content/${params.slug}.md`
+  // Perbaikan 2: Menggunakan path absolut untuk membaca file
+  const filePath = path.join(process.cwd(), 'content', `${params.slug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const {data, content} = matter(fileContent)
 
@@ -62,13 +64,12 @@ export default async function BlogPage({ params }: { params: { slug: string } })
   }
 
   const tableOfContents = extractHeadings(htmlContent)
-  {/* Mobile Table of Contents - Collapsible */}
-  <MobileTableOfContents tableOfContents={tableOfContents} />
   
   return (
     <MaxWidthWrapper className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'> 
-    {/* Mobile Table of Contents - Moved to top */}
+      {/* Mobile Table of Contents */}
       <MobileTableOfContents tableOfContents={tableOfContents} />
+      
       {/* Header Section */}
       <div className='py-8 border-b border-gray-200 dark:border-gray-700 mb-8'>
         <div className='text-center'>
@@ -93,8 +94,6 @@ export default async function BlogPage({ params }: { params: { slug: string } })
           )}
         </div>
       </div>
-
-      
 
       {/* Main Content Layout */}
       <div className='flex flex-col lg:flex-row gap-8 lg:gap-12'> 
@@ -147,7 +146,6 @@ export default async function BlogPage({ params }: { params: { slug: string } })
         </aside>
       </div>
 
-
       {/* Back to Top Button */}
       <BackToTopButton />
     </MaxWidthWrapper>
@@ -158,12 +156,13 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const filePath = `content/${params.slug}.md`
+  // Perbaikan 3: Menggunakan path absolut juga untuk metadata
+  const filePath = path.join(process.cwd(), 'content', `${params.slug}.md`);
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const {data} = matter(fileContent)
   
   return {
-    title: `${data.title} - ProgrammingWithHarry`, 
+    title: `${data.title} - Pixel Society`, // Ganti sesuai nama website Anda
     description: data.description,
     openGraph: {
       title: data.title,
