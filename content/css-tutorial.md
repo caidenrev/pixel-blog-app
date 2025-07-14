@@ -1,35 +1,37 @@
 ---
 title: CSS Tutorial
 slug: css-tutorial
-description: Comprehensive guide on learning CSS, from styling basics to advanced techniques like Flexbox, Grid, and animations.
+description: CSS Tutorial Basic Dengan Pembahasan Mengenai Flexbox, Grid, and animations.
 imageUrl: https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 ---
 
-# CSS Tutorial: A Comprehensive Guide
+# Tutorial CSS: Panduan Komprehensif
 
-Welcome to this comprehensive CSS tutorial! This guide will help you master the art of styling websites using CSS (Cascading Style Sheets). Whether you're a beginner or looking to expand your knowledge, this tutorial covers everything from basic styles to advanced layout techniques and animations.
+Selamat datang di tutorial CSS yang komprehensif ini\! Panduan ini akan membantu Anda menguasai seni menata gaya situs web menggunakan CSS (Cascading Style Sheets). Baik Anda seorang pemula atau ingin memperluas pengetahuan, tutorial ini mencakup semuanya, mulai dari gaya dasar hingga teknik tata letak dan animasi tingkat lanjut.
 
-## Introduction to CSS
+## Pengenalan CSS
 
-CSS is the language used to style HTML content, enabling you to control the layout, colors, fonts, and overall visual presentation of a website.
+CSS adalah bahasa yang digunakan untuk menata konten HTML, memungkinkan Anda mengontrol tata letak, warna, font, dan presentasi visual keseluruhan dari sebuah situs web.
 
-### Why Learn CSS?
+### Mengapa Belajar CSS?
 
-- **Styling and Layout**: CSS allows you to transform plain HTML into visually appealing web pages.
-- **Responsiveness**: With CSS, you can create responsive designs that adapt to different screen sizes and devices.
-- **Customizability**: CSS provides the flexibility to fine-tune every aspect of your site's appearance.
+  - **Penataan Gaya dan Tata Letak**: CSS memungkinkan Anda mengubah HTML biasa menjadi halaman web yang menarik secara visual.
+  - **Responsif**: Dengan CSS, Anda dapat membuat desain responsif yang beradaptasi dengan berbagai ukuran layar dan perangkat.
+  - **Kustomisasi**: CSS memberikan fleksibilitas untuk menyempurnakan setiap aspek tampilan situs Anda.
 
-## Setting Up CSS
+-----
 
-To use CSS, you can either include it directly in your HTML file (inline or internal) or as an external stylesheet. Here’s how to set up CSS:
+## Menyiapkan CSS
 
-### Inline CSS
+Untuk menggunakan CSS, Anda dapat menyertakannya langsung di file HTML Anda (inline atau internal) atau sebagai stylesheet eksternal. Berikut cara menyiapkan CSS:
+
+### CSS Inline
 
 ```html
-<p style="color: blue;">This is a blue paragraph.</p>
+<p style="color: blue;">Ini adalah paragraf biru.</p>
 ```
 
-### Internal CSS
+### CSS Internal
 
 ```html
 <!DOCTYPE html>
@@ -42,20 +44,20 @@ To use CSS, you can either include it directly in your HTML file (inline or inte
     </style>
 </head>
 <body>
-    <p>This is a blue paragraph.</p>
+    <p>Ini adalah paragraf biru.</p>
 </body>
 </html>
 ```
 
-### External CSS
+### CSS Eksternal
 
-Create a separate CSS file (e.g., `styles.css`) and link it to your HTML file.
+Buat file CSS terpisah (misalnya, `styles.css`) dan tautkan ke file HTML Anda.
 
 ```html
 <link rel="stylesheet" href="styles.css">
 ```
 
-In `styles.css`:
+Di `styles.css`:
 
 ```css
 p {
@@ -63,59 +65,63 @@ p {
 }
 ```
 
-## CSS Basics
+-----
 
-Now, let’s dive into the basics of CSS, including selectors, properties, and how to apply styles to HTML elements.
+## Dasar-dasar CSS
 
-### Selectors
+Sekarang, mari kita selami dasar-dasar CSS, termasuk selektor, properti, dan cara menerapkan gaya ke elemen HTML.
 
-Selectors are used to target HTML elements and apply styles. Some common selectors include:
+### Selektor
 
-- **Element Selector**: Targets all instances of an element (e.g., `p` for paragraphs).
-- **Class Selector**: Targets elements with a specific class (e.g., `.example`).
-- **ID Selector**: Targets an element with a specific ID (e.g., `#header`).
+Selektor digunakan untuk menargetkan elemen HTML dan menerapkan gaya. Beberapa selektor umum meliputi:
+
+  - **Selektor Elemen**: Menargetkan semua instance dari sebuah elemen (misalnya, `p` untuk paragraf).
+  - **Selektor Class**: Menargetkan elemen dengan *class* tertentu (misalnya, `.contoh`).
+  - **Selektor ID**: Menargetkan elemen dengan *ID* tertentu (misalnya, `#header`).
+
+<!-- end list -->
 
 ```css
-/* Element selector */
+/* Selektor elemen */
 p {
     color: green;
 }
 
-/* Class selector */
-.example {
+/* Selektor class */
+.contoh {
     font-size: 20px;
 }
 
-/* ID selector */
+/* Selektor ID */
 #header {
     background-color: lightgray;
 }
 ```
 
-### Colors and Backgrounds
+### Warna dan Latar Belakang
 
-CSS allows you to set text colors, background colors, and images.
+CSS memungkinkan Anda untuk mengatur warna teks, warna latar belakang, dan gambar.
 
 ```css
-/* Text color */
+/* Warna teks */
 h1 {
     color: darkblue;
 }
 
-/* Background color */
+/* Warna latar belakang */
 body {
     background-color: lightyellow;
 }
 
-/* Background image */
+/* Gambar latar belakang */
 div {
     background-image: url('background.jpg');
 }
 ```
 
-### Fonts and Text Styling
+### Font dan Penataan Teks
 
-Control the typography of your website using fonts, text alignment, and decoration properties.
+Kontrol tipografi situs web Anda menggunakan properti font, perataan teks, dan dekorasi.
 
 ```css
 h1 {
@@ -126,13 +132,15 @@ h1 {
 }
 ```
 
-## Intermediate CSS
+-----
 
-After mastering the basics, you can start exploring more intermediate CSS concepts such as box model, positioning, and layout techniques.
+## CSS Tingkat Menengah
+
+Setelah menguasai dasar-dasarnya, Anda dapat mulai menjelajahi konsep CSS yang lebih menengah seperti *box model*, *positioning*, dan teknik tata letak.
 
 ### Box Model
 
-The box model is fundamental to understanding how elements are sized and spaced in CSS. It consists of four components: content, padding, border, and margin.
+*Box model* adalah dasar untuk memahami bagaimana elemen diukur dan diberi spasi dalam CSS. Ini terdiri dari empat komponen: konten, *padding*, *border*, dan *margin*.
 
 ```css
 div {
@@ -145,13 +153,15 @@ div {
 
 ### Positioning
 
-CSS provides several ways to position elements on a page:
+CSS menyediakan beberapa cara untuk memposisikan elemen di halaman:
 
-- **Static**: The default position (elements appear in the normal document flow).
-- **Relative**: Positioned relative to its normal position.
-- **Absolute**: Positioned relative to the nearest positioned ancestor.
-- **Fixed**: Positioned relative to the viewport.
-- **Sticky**: A hybrid between relative and fixed positioning.
+  - **Static**: Posisi default (elemen muncul dalam alur dokumen normal).
+  - **Relative**: Diposisikan relatif terhadap posisi normalnya.
+  - **Absolute**: Diposisikan relatif terhadap leluhur terdekat yang diposisikan.
+  - **Fixed**: Diposisikan relatif terhadap viewport.
+  - **Sticky**: Hibrida antara pemosisian *relative* dan *fixed*.
+
+<!-- end list -->
 
 ```css
 div {
@@ -163,7 +173,7 @@ div {
 
 ### Flexbox
 
-Flexbox is a powerful layout model that allows you to create flexible and responsive layouts.
+Flexbox adalah model tata letak yang kuat yang memungkinkan Anda membuat tata letak yang fleksibel dan responsif.
 
 ```css
 .container {
@@ -180,7 +190,7 @@ Flexbox is a powerful layout model that allows you to create flexible and respon
 
 ### Grid
 
-CSS Grid Layout provides a two-dimensional layout system, making it easy to design complex web layouts.
+CSS Grid Layout menyediakan sistem tata letak dua dimensi, membuatnya mudah untuk merancang tata letak web yang kompleks.
 
 ```css
 .container {
@@ -195,13 +205,15 @@ CSS Grid Layout provides a two-dimensional layout system, making it easy to desi
 }
 ```
 
-## Advanced CSS
+-----
 
-Now that you’re comfortable with intermediate concepts, it’s time to explore advanced topics like CSS animations, transitions, and responsive design.
+## CSS Tingkat Lanjut
 
-### CSS Animations
+Sekarang setelah Anda nyaman dengan konsep tingkat menengah, saatnya menjelajahi topik lanjutan seperti animasi CSS, transisi, dan desain responsif.
 
-CSS animations allow you to animate transitions between different styles.
+### Animasi CSS
+
+Animasi CSS memungkinkan Anda untuk menganimasikan transisi antara gaya yang berbeda.
 
 ```css
 @keyframes fadeIn {
@@ -218,9 +230,9 @@ div {
 }
 ```
 
-### CSS Transitions
+### Transisi CSS
 
-Transitions allow you to smoothly change property values over a specified duration.
+Transisi memungkinkan Anda mengubah nilai properti secara mulus selama durasi yang ditentukan.
 
 ```css
 button {
@@ -235,17 +247,17 @@ button:hover {
 
 ### Media Queries
 
-Media queries enable responsive design by applying different styles based on the device's characteristics (e.g., screen width).
+*Media queries* memungkinkan desain responsif dengan menerapkan gaya yang berbeda berdasarkan karakteristik perangkat (misalnya, lebar layar).
 
 ```css
-/* For screens wider than 600px */
+/* Untuk layar lebih lebar dari 600px */
 @media (min-width: 600px) {
     body {
         background-color: lightgreen;
     }
 }
 
-/* For screens narrower than 600px */
+/* Untuk layar lebih sempit dari 600px */
 @media (max-width: 600px) {
     body {
         background-color: lightpink;
@@ -253,8 +265,10 @@ Media queries enable responsive design by applying different styles based on the
 }
 ```
 
-## Conclusion
+-----
 
-Congratulations on completing this CSS tutorial! You’ve learned the basics of CSS, intermediate layout techniques like Flexbox and Grid, and advanced topics like animations and responsive design. With CSS, you can create beautiful, responsive websites that look great on any device. Keep practicing and experimenting to further develop your CSS skills.
+## Kesimpulan
 
-Happy styling!
+Selamat telah menyelesaikan tutorial CSS ini\! Anda telah mempelajari dasar-dasar CSS, teknik tata letak menengah seperti Flexbox dan Grid, dan topik lanjutan seperti animasi dan desain responsif. Dengan CSS, Anda dapat membuat situs web yang indah dan responsif yang terlihat bagus di perangkat apa pun. Teruslah berlatih dan bereksperimen untuk mengembangkan keterampilan CSS Anda lebih lanjut.
+
+Selamat menata gaya\!

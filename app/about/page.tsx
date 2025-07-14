@@ -14,7 +14,6 @@ import {
   Sparkles,
   Github,
   Linkedin,
-  Twitter,
   Instagram,
   Mail,
   BookOpen,
@@ -22,6 +21,7 @@ import {
   Zap,
   Server,
   Database,
+  PhoneCall,
   Layout
 } from 'lucide-react'
 
@@ -63,26 +63,26 @@ export default function About() {
     {
       name: 'Next.js 14',
       image: '/images/next.js.svg', // Replace with your actual image path
-      description: 'Latest Next.js for optimal performance and SEO',
+      description: 'Menggunakan Next.Js terbaru untuk performa optimal dan SEO',
       color: 'from-blue-500 to-blue-700',
       largeImage: true // Add flag for larger image
     },
     {
       name: 'TypeScript',
       image: '/images/typescript.svg', // Replace with your actual image path
-      description: 'Type-safe development for robust code',
+      description: 'Dengan TypeScript untuk pengembangan yang aman dan robust',
       color: 'from-blue-400 to-blue-600'
     },
     {
       name: 'Tailwind CSS',
       image: '/images/tailwindcss.svg', // Replace with your actual image path
-      description: 'Modern utility-first CSS framework',
+      description: 'Udah jelas biar SatSet dan Gampang Breakpoint',
       color: 'from-teal-500 to-teal-700'
     },
     {
       name: 'Amazon Web Service',
       image: '/images/aws.svg', // Replace with your actual image path
-      description: 'Easy content management for blog posts',
+      description: 'Untuk hosting dan deployment yang scalable',
       color: 'from-purple-500 to-purple-700',
       largeImage: true // Add flag for larger image
     }
@@ -90,27 +90,27 @@ export default function About() {
 
   const features = [
     {
-      name: 'Dark Mode',
+      name: 'Syntax Highlight',
       icon: <Lightbulb className="w-6 h-6" />,
-      description: 'Comfortable reading experience in any lighting',
+      description: 'Konten Syntax Highlight untuk kode yang jelas',
       color: 'from-yellow-500 to-yellow-700'
     },
     {
-      name: 'Responsive Design',
+      name: 'Desain Interaktif',
       icon: <Target className="w-6 h-6" />,
-      description: 'Perfect viewing on all devices',
+      description: 'Desain yang responsif dan interaktif untuk pengalaman pengguna yang optimal',
       color: 'from-green-500 to-green-700'
     },
     {
-      name: 'Fast Loading',
+      name: 'Materi Terkini',
       icon: <Zap className="w-6 h-6" />,
-      description: 'Optimized performance and quick page loads',
+      description: 'Materi yang universal dan selalu diperbarui',
       color: 'from-red-500 to-red-700'
     },
     {
-      name: 'SEO Optimized',
+      name: 'Integrasi Backsystem Modern',
       icon: <Server className="w-6 h-6" />,
-      description: 'Better visibility in search results',
+      description: 'Dengan deploy ke AWS untuk menunjang effisiensi backsystem',
       color: 'from-indigo-500 to-indigo-700'
     }
   ]
@@ -121,21 +121,21 @@ export default function About() {
       name: "Eka Revandi",
       role: "Moderator",
       image: "/images/naruto.jpg",  // Updated path without 'public'
-      bio: "Frontend Engineer with experience in web and mobile app development, skilled in UX/UI design and cloud computing.",
-      expertise: ["Google UX Academy", "Google Developer Groups", "Frontend Engineer", "Web Engineer"],
-      github: "#",
-      linkedin: "#",
-      instagram: "#"
+      bio: "Frontend Engineer dengan pengalaman di bidang pengembangan Software serta Keahlian lain seperti Cloud Computing dalam integrasi server yang efisien.",
+      expertise: ["Software Engineer", "UI/UX Design", "Cloud Architechture Engineer", "Frontend Engineer", "JavaScript", "Next.Js", "Figma Design"],
+      github: "https://www.github.com/caidenrev",
+      linkedin: "https://linkedin.com/in/eka-revandi-5591a731b",
+      instagram: "https://instagram.com/caidenrev"
     },
     {
       name: "Yudi Setiawan",
       role: "Founder", 
       image: "/images/sasuke.jpg",  // Updated path without 'public'
-      bio: "Backend Engineer specializing in system architecture and API integration, with expertise in infrastructure management.",
-      expertise: ["Software Architecture", "Lua Programming", "Bot Engineering"],
-      github: "#",
-      linkedin: "#",
-      twitter: "#"
+      bio: "Backend Engineer spesialis dalam system architecture dan API integration, dengan keahlian di manajemen infrastruktur.",
+      expertise: ["Software Architecture", "Software Engineer", "Laravel", "PHP", "Python", "Data Analyst", "Fullstack Engineer", "Data Science", "Computer Science" ],
+      github: "https://www.github.com/yudsetiawan",
+      linkedin: "https://www.linkedin.com/in/yudisetiawann",
+      instagram: "https://www.instagram.com/yset__"
     },
   ]
 
@@ -189,65 +189,67 @@ export default function About() {
           ))}
         </div>
         
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className={`transition-all duration-1000 ${isVisible.hero ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
-              <div className="mb-6">
-                <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium">
-                  <Coffee className="w-4 h-4 mr-2" />
-                  Gen Z Learning Platform
-                </span>
-              </div>
-              
-              <h1 className="text-3xl font-pixel md:text-4xl font-black text-white mb-6 leading-tight">
-                Tentang <br></br>
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  {" "}Pixel Learn
-                </span>
-              </h1>
-              
-              <p className="text-xl text-gray-300 mb-6 leading-relaxed">
-                A modern blogging platform built with the latest web technologies, designed to provide an exceptional writing and reading experience.
-              </p>
-
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                Created by developers for developers, Pixel Blog combines beautiful design with powerful features to make your content stand out.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
-                  Start Writing
-                  <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button className="px-8 py-4 border-2 border-gray-700 text-gray-300 rounded-2xl font-bold text-lg hover:bg-gray-800 transition-all duration-300">
-                  View Features
-                </button>
-              </div>
-            </div>
-
-            <div className={`transition-all duration-1000 delay-300 ${isVisible.hero ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
-              <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800"
-                  alt="Modern Workspace"
-                  layout="fill"
-                  objectFit="cover"
-                  className="transition-transform duration-500 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-gray-900/20 to-transparent"></div>
-              </div>
-            </div>
-          </div>
+        <div className="relative mt-56 mb-56 lg:mb-0 lg:mt-0 z-10 max-w-6xl mx-auto px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className={`transition-all duration-1000 ${isVisible.hero ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
+        <div className="mb-6">
+          <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium">
+            <Coffee className="w-4 h-4 mr-2" />
+            Gen Z Learning Platform
+          </span>
         </div>
-      </section>
+        
+        <h1 className="text-3xl font-pixel md:text-4xl font-black text-white mb-6 leading-tight">
+          Tentang <br></br>
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            {" "}Pixel Learn
+          </span>
+        </h1>
+        
+        <p className="text-xl text-gray-300 mb-6 leading-relaxed">
+          Berawal dengan muak nya kurikulum kampus swasta yang dinilai tidak tepat sasaran,
+        </p>
+
+        <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+          Pixel Learn hadir sebagai solusi untuk menyediakan materi yang universal dan mencangkup learning path serta roadmap global.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+            <a href="/blog">Jelajahi Course</a>
+            <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </button>
+          <button className="px-8 py-4 border-2 border-gray-700 text-gray-300 rounded-2xl font-bold text-lg hover:bg-gray-800 transition-all duration-300">
+            <a href="https://discord.gg/DwgAJbkE">Join Discord</a>
+          </button>
+        </div>
+      </div>
+
+      <div className={`hidden lg:block transition-all duration-1000 delay-300 ${isVisible.hero ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'}`}>
+        {/* Hapus kelas w-full dan aspect-video agar ukuran container mengikuti gambar */}
+        <div className="relative overflow-hidden rounded-3xl">
+          <Image
+            src="/images/logo pixel.png"
+            alt="Modern Workspace"
+            // Ganti dengan lebar asli gambar Anda (dalam piksel)
+            width={500} // Contoh: 500px
+            // Ganti dengan tinggi asli gambar Anda (dalam piksel)
+            height={300} // Contoh: 300px
+            className="transition-transform duration-500 hover:scale-110 drop-shadow-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
        {/* Tech Stack Section - Updated with custom images */}
       <section id="tech" className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black text-white mb-6">Tech Stack</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Built with modern technologies for optimal performance and developer experience
+            <h2 className="text-2xl lg:text-4xl font-pixel font-black text-white mb-6">Tech Stack</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Dibangun dengan teknologi modern untuk performa optimal dan pengalaman pengembang yang baik
             </p>
           </div>
 
@@ -283,9 +285,9 @@ export default function About() {
       <section id="features" className="py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black text-white mb-6">Key Features</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Everything you need for a modern blogging experience
+            <h2 className="text-2xl lg:text-4xl font-pixel font-black text-white mb-6">Fitur Pixel</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Beberapa Fitur dari Web App Pixel Learn
             </p>
           </div>
 
@@ -313,9 +315,9 @@ export default function About() {
       <section id="team" className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-black text-white mb-6">Meet the Team</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              The talented people behind Pixel Blog
+            <h2 className="text-2xl lg:text-5xl font-black font-pixel text-white mb-6">Meet the Team</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              The talented people behind Pixel Learn
             </p>
           </div>
 
@@ -384,8 +386,8 @@ export default function About() {
                       <a href={member.linkedin} className="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
                         <Linkedin className="w-6 h-6" />
                       </a>
-                      <a href={member.twitter} className="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
-                        <Twitter className="w-6 h-6" />
+                      <a href={member.instagram} className="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                        <Instagram className="w-6 h-6" />
                       </a>
                     </div>
                   </div>
@@ -399,16 +401,16 @@ export default function About() {
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-5xl font-black mb-6 text-white">Get In Touch</h2>
-          <p className="text-xl mb-12 text-gray-300">
-            Have questions or want to contribute? We'd love to hear from you!
+          <h2 className="text-xl lg:text-2xl font-pixel font-black mb-6 text-white">Get In Touch</h2>
+          <p className="text-lg lg:text-xl mb-12 text-gray-300">
+           Punya Pertanyaan serta mau kontribusi?, Hubungi Kami
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             {[
               { icon: <Github className="w-8 h-8" />, label: 'GitHub', href: '#' },
-              { icon: <Linkedin className="w-8 h-8" />, label: 'LinkedIn', href: '#' },
-              { icon: <Twitter className="w-8 h-8" />, label: 'Twitter', href: '#' },
+              { icon: <PhoneCall className="w-8 h-8" />, label: 'Phone', href: 'wa.me/628886340076' },
+              { icon: <Instagram className="w-8 h-8" />, label: 'Instagram', href: '#' },
               { icon: <Mail className="w-8 h-8" />, label: 'Email', href: '#' }
             ].map((social, index) => (
               <a
@@ -429,10 +431,10 @@ export default function About() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105">
-              Start Contributing
+              <a href="https://discord.gg/DwgAJbkE">Kontribusi Sekarang</a>
             </button>
             <button className="px-8 py-4 border-2 border-gray-700 text-white rounded-2xl font-bold text-lg hover:bg-gray-800 transition-all duration-300">
-              View Documentation
+              <a href="/404">Lihat Dokumentasi</a>
             </button>
           </div>
         </div>

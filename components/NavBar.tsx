@@ -82,7 +82,7 @@ const NavBar = () => {
                           height={24}
                           className="w-10 h-10 object-contain"
                         />
-                    <span className="text-xl sm:text-sm font-bold bg-white transition-colors duration-300 hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <span className="text-sm lg:text-2xl sm:text-xs font-bold bg-white transition-colors duration-300 hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                         Pixel Learn
                     </span>
                 </Link>
@@ -111,7 +111,7 @@ const NavBar = () => {
                             pathname === '/blog' ? 'text-blue-400 after:w-full' : ''
                         }`}
                     >
-                        Blog
+                        Courses
                     </Link>
                     <Link 
                         href="/contact" 
@@ -173,7 +173,7 @@ const NavBar = () => {
                         <SheetContent className="w-[300px] sm:w-[400px]">
                             <SheetHeader>
                                 <SheetTitle className="flex items-center space-x-2">
-                                    <span className="text-sm font-pixel bg-white hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                    <span className="text-sm sm:text-xs font-pixel bg-white hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                                         Pixel Learn
                                     </span>
                                 </SheetTitle>
