@@ -173,7 +173,7 @@ const NavBar = () => {
                         <SheetContent className="w-[300px] sm:w-[400px]">
                             <SheetHeader>
                                 <SheetTitle className="flex items-center space-x-2">
-                                    <span className="text-lg font-pixel bg-white hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                    <span className="text-sm font-pixel bg-white hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                                         Pixel Learn
                                     </span>
                                 </SheetTitle>
