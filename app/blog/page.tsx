@@ -35,7 +35,7 @@ console.log(blogs)
 const BlogList = () => {
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6 text-center my-2">Our Blogs</h1>
+      <h1 className="text-3xl font-pixel font-bold mb-6 text-center my-2">Our Blogs</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogs.map((blog: BlogType, index: number) =>  (
           <div
@@ -54,7 +54,7 @@ const BlogList = () => {
                 href={`/blogpost/${blog.slug}`}
                 className={buttonVariants({ variant:"default" })}
               >
-                Read More
+                <span className="font-bold">Baca Course</span>
               </Link>
             </div>
           </div>
@@ -65,7 +65,7 @@ const BlogList = () => {
 };
 
 export const metadata: Metadata = {
-  title: 'Blogs - ProgrammingWithHarry',
+  title: 'Blogs - Pixel Rhythm Society ',
   description: 'A comprehensive blog for coders of all levels, from beginners to advanced. Explore tutorials, tips, and insights on a wide range of programming languages and technologies. Stay up-to-date with the latest trends in software development, learn best practices, and enhance your coding skills with in-depth articles and guides.',
 }
  

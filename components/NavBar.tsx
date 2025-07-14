@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image' // Add this import
 import { Button, buttonVariants } from "@/components/ui/button"
 import { Code, Menu } from 'lucide-react'
 import {
@@ -63,7 +64,7 @@ const NavBar = () => {
     }
 
     return (
-        <nav className='z-50 px-4 py-6 bg-background/80 backdrop-blur-md border-b border-border/40 sticky top-0'>
+        <nav className='z-50 px-4 font-pixel py-6 bg-background/80 backdrop-blur-md border-b border-border/40 sticky top-0'>
             <LoadingBar
                 color='#3b82f6'
                 progress={progress}
@@ -74,11 +75,15 @@ const NavBar = () => {
             <div className="container mx-auto flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center space-x-2 group">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-                        <Code className="w-6 h-6 text-white" />
-                    </div>
-                    <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Pixel Code
+                        <Image 
+                          src="/images/logo pixel.png" // Update with your logo path
+                          alt="Pixel Code Logo"
+                          width={24}
+                          height={24}
+                          className="w-10 h-10 object-contain"
+                        />
+                    <span className="text-xl font-bold bg-white transition-colors duration-300 hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Pixel Learn
                     </span>
                 </Link>
 
@@ -131,13 +136,13 @@ const NavBar = () => {
                         </button>
                     )}
                     <Link 
-                        href="/login" 
+                        href="/404" 
                         className={`${buttonVariants({ variant: "ghost" })} hover:text-blue-400 transition-colors duration-300`}
                     >
                         Login
                     </Link>
                     <Link 
-                        href="/signup" 
+                        href="/404" 
                         className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                     >
                         Sign Up
@@ -168,11 +173,8 @@ const NavBar = () => {
                         <SheetContent className="w-[300px] sm:w-[400px]">
                             <SheetHeader>
                                 <SheetTitle className="flex items-center space-x-2">
-                                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                                        <Code className="w-5 h-5 text-white" />
-                                    </div>
-                                    <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                        TechForge
+                                    <span className="text-lg font-pixel bg-white hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                        Pixel Learn
                                     </span>
                                 </SheetTitle>
                                 <SheetDescription className="sr-only">

@@ -14,7 +14,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
   const navItems = [
     { href: '/', label: 'Home', icon: Home },
     { href: '/about', label: 'About', icon: User },
-    { href: '/blog', label: 'Blog', icon: BookOpen },
+    { href: '/blog', label: 'Courses', icon: BookOpen },
     { href: '/contact', label: 'Contact', icon: Mail },
   ]
 
@@ -50,7 +50,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
       {/* Auth Buttons */}
       <div className="space-y-3">
         <Link
-          href="/login"
+          href="/404"
           onClick={onItemClick}
           className={`${buttonVariants({ variant: "outline" })} w-full justify-start space-x-2 hover:bg-muted hover:text-blue-400 transition-colors duration-300`}
         >
@@ -59,7 +59,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
         </Link>
         
         <Link
-          href="/signup"
+          href="/404"
           onClick={onItemClick}
           className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
         >
@@ -71,7 +71,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
       {/* Additional Info */}
       <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg border">
         <p className="text-sm text-muted-foreground text-center">
-          Join thousands of developers learning with TechForge
+          Gabung bersama developer serta engineer berbakat lainnya di komunitas kami.
         </p>
       </div>
     </div>

@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { 
-  Code, 
   Users, 
   Award, 
   Lightbulb, 
@@ -59,30 +58,33 @@ export default function About() {
 
   const [particles, setParticles] = useState<Particle[]>([]);
 
+  // Updated techStack with custom images
   const techStack = [
     {
       name: 'Next.js 14',
-      icon: <Code className="w-6 h-6" />,
+      image: '/images/next.js.svg', // Replace with your actual image path
       description: 'Latest Next.js for optimal performance and SEO',
-      color: 'from-blue-500 to-blue-700'
+      color: 'from-blue-500 to-blue-700',
+      largeImage: true // Add flag for larger image
     },
     {
       name: 'TypeScript',
-      icon: <Target className="w-6 h-6" />,
+      image: '/images/typescript.svg', // Replace with your actual image path
       description: 'Type-safe development for robust code',
       color: 'from-blue-400 to-blue-600'
     },
     {
       name: 'Tailwind CSS',
-      icon: <Layout className="w-6 h-6" />,
+      image: '/images/tailwindcss.svg', // Replace with your actual image path
       description: 'Modern utility-first CSS framework',
       color: 'from-teal-500 to-teal-700'
     },
     {
-      name: 'Markdown',
-      icon: <BookOpen className="w-6 h-6" />,
+      name: 'Amazon Web Service',
+      image: '/images/aws.svg', // Replace with your actual image path
       description: 'Easy content management for blog posts',
-      color: 'from-purple-500 to-purple-700'
+      color: 'from-purple-500 to-purple-700',
+      largeImage: true // Add flag for larger image
     }
   ]
 
@@ -193,14 +195,14 @@ export default function About() {
               <div className="mb-6">
                 <span className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 text-blue-400 text-sm font-medium">
                   <Coffee className="w-4 h-4 mr-2" />
-                  Modern Blog Platform
+                  Gen Z Learning Platform
                 </span>
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-                About
+              <h1 className="text-3xl font-pixel md:text-4xl font-black text-white mb-6 leading-tight">
+                Tentang <br></br>
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  {" "}Pixel Blog
+                  {" "}Pixel Learn
                 </span>
               </h1>
               
@@ -239,7 +241,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Tech Stack Section */}
+       {/* Tech Stack Section - Updated with custom images */}
       <section id="tech" className="py-24 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -258,8 +260,16 @@ export default function About() {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${tech.color} rounded-2xl flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  {tech.icon}
+                <div className={`${tech.largeImage ? 'w-28 h-28' : 'w-20 h-20'} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={tech.image}
+                      alt={`${tech.name} logo`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-white">{tech.name}</h3>
                 <p className="text-gray-400 leading-relaxed">{tech.description}</p>

@@ -84,10 +84,14 @@ export default function ModernTechLanding() {
   ];
 
   return (
-    <div className={`min-h-screen transition-all duration-300 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-      {/* Animated background */}
+    <div className={`min-h-screen transition-all duration-300 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-b from-gray-900 via-gray-900 to-gray-900' 
+        : 'bg-white text-gray-900'
+    }`}>
+      {/* Background gradient overlay */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-pink-600/10 dark:from-blue-600/10 dark:via-purple-600/5 dark:to-pink-600/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-pink-600/5 dark:from-blue-600/10 dark:via-purple-600/10 dark:to-pink-600/10"></div>
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
@@ -243,7 +247,7 @@ export default function ModernTechLanding() {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 mb-8">
           {services.map((service, index) => (
             <div
               key={service.id}
