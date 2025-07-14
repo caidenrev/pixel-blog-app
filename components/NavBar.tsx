@@ -82,7 +82,7 @@ const NavBar = () => {
                           height={24}
                           className="w-10 h-10 object-contain"
                         />
-                    <span className="text-xl font-bold bg-white transition-colors duration-300 hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <span className="text-xl sm:text-sm font-bold bg-white transition-colors duration-300 hover:bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                         Pixel Learn
                     </span>
                 </Link>
