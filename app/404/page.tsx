@@ -41,13 +41,6 @@ export default function NotFound() {
     }
   ]
 
-  const stats = [
-    { number: '70%', label: 'Auth System', icon: <Code className="w-6 h-6" /> },
-    { number: '60%', label: 'User Profile', icon: <Users className="w-6 h-6" /> },
-    { number: '65%', label: 'Social Login', icon: <Play className="w-6 h-6" /> },
-    { number: '2-3', label: 'Weeks Left', icon: <Clock className="w-6 h-6" /> }
-  ]
-
   return (
     <div className={`min-h-screen transition-all duration-300 ${
       theme === 'dark' 
@@ -235,27 +228,6 @@ export default function NotFound() {
             </motion.div>
           </div>
         </div>
-        
-        {/* Stats - Same style as home */}
-        <motion.div
-          className="mt-20 grid font-pixel grid-cols-2 lg:grid-cols-4 gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          {stats.map((stat, index) => (
-            <div 
-              key={index}
-              className="text-center p-6 rounded-xl bg-gray-100/80 dark:bg-gray-800/30 backdrop-blur-sm border border-gray-200 dark:border-gray-700 hover:bg-gray-200/80 dark:hover:bg-gray-800/50 transition-all"
-            >
-              <div className="flex justify-center mb-2 text-orange-500 dark:text-orange-400">
-                {stat.icon}
-              </div>
-              <div className="text-sm font-bold text-orange-500 dark:text-orange-400">{stat.number}</div>
-              <div className="text-xs text-gray-600 dark:text-white">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </section>
       
       {/* Development Features Section - Same structure as services */}
