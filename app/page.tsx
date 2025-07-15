@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Search, Eye, MessageCircle, Code, Smartphone, Cloud, Play, ChevronRight, Star, Zap, Users, Award } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import BackToTopButton from '@/components/BackToTopButton';
 
 const strings = ['Tailwind CSS', 'React', 'TypeScript', 'Next.js'];
 
@@ -48,39 +49,41 @@ export default function ModernTechLanding() {
 
   const services = [
     {
-      id: 'web-dev',
-      category: 'WEB DEVELOPMENT',
-      title: 'Full-Stack Solutions',
-      description: 'Building robust, scalable, and responsive web applications using modern tech stacks like React, Node.js, and more.',
-      icon: <Code className="w-6 h-6" />,
-      views: '2.4K',
-      comments: '32'
-    },
-    {
-      id: 'mobile-dev',
-      category: 'MOBILE DEVELOPMENT',
-      title: 'Cross-Platform Apps',
-      description: 'Crafting seamless mobile experiences for both Android and iOS using frameworks like React Native and Flutter.',
-      icon: <Smartphone className="w-6 h-6" />,
-      views: '1.8K',
-      comments: '18'
-    },
-    {
-      id: 'cloud-solutions',
-      category: 'CLOUD SOLUTIONS',
-      title: 'Scalable Infrastructure',
-      description: 'Implementing and managing cloud environments with AWS, Azure, and GCP to ensure your applications scale effortlessly.',
-      icon: <Cloud className="w-6 h-6" />,
-      views: '3.1K',
-      comments: '24'
-    }
+    id: 'web-dev',
+    category: 'PENGEMBANGAN WEB',
+    title: 'Solusi Full-Stack',
+    description: 'Membangun aplikasi web yang tangguh, skalabel, dan responsif menggunakan teknologi modern seperti React, Node.js, dan lainnya.',
+    icon: <Code className="w-6 h-6" />,
+    views: '2,4K',
+    comments: '32'
+  },
+
+  {
+    id: 'mobile-dev',
+    category: 'PENGEMBANGAN MOBILE',
+    title: 'Aplikasi Lintas Platform',
+    description: 'Menciptakan pengalaman mobile yang mulus untuk Android dan iOS dengan framework seperti React Native dan Flutter.',
+    icon: <Smartphone className="w-6 h-6" />,
+    views: '1,8K',
+    comments: '18'
+  },
+
+  {
+    id: 'cloud-solutions',
+    category: 'SOLUSI CLOUD',
+    title: 'Infrastruktur Skalabel',
+    description: 'Mengimplementasikan dan mengelola lingkungan cloud menggunakan AWS, Azure, dan GCP untuk memastikan aplikasi Anda mudah diskalakan.',
+    icon: <Cloud className="w-6 h-6" />,
+    views: '3,1K',
+    comments: '24'
+  }
   ];
 
   const stats = [
-    { number: '50K+', label: 'Active Learners', icon: <Users className="w-6 h-6" /> },
-    { number: '1M+', label: 'Lessons Completed', icon: <Play className="w-6 h-6" /> },
-    { number: '100+', label: 'Expert Instructors', icon: <Award className="w-6 h-6" /> },
-    { number: '95%', label: 'Success Rate', icon: <Star className="w-6 h-6" /> }
+    { number: '50+', label: 'Pengguna Aktif', icon: <Users className="w-6 h-6" /> },
+    { number: '10+', label: 'Modul Belajar', icon: <Play className="w-6 h-6" /> },
+    { number: '5+', label: 'Mentor Gen Z', icon: <Award className="w-6 h-6" /> },
+    { number: '95%', label: 'Rating', icon: <Star className="w-6 h-6" /> }
   ];
 
   return (
@@ -147,14 +150,24 @@ export default function ModernTechLanding() {
             <div className="flex flex-wrap gap-4">
               <button className="group bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg text-white text-xs lg:text-sm font-pixel">
                 <div className="flex items-center space-x-2">
+                  <a href="/blog">Mulai Belajar</a>
                   <Play className="w-5 h-5" />
-                  <span>Start Learning Free</span>
                 </div>
               </button>
-              <button className="font-pixel text-xs lg:text-sm group border border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all text-gray-900 dark:text-white">
+              <button className="font-pixel text-xs lg:text-sm group border bg-blue-600 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-indigo-600 transition-all text-gray-900 dark:text-white">
                 <div className="flex items-center space-x-2">
-                  <span>Browse Lessons</span>
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+                  <a href="https://discord.gg/DwgAJbkE"
+                  className="inline-flex items-center gap-2 text-white hover:transform hover:scale-105 transition-all"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Discord
+                  <img
+                    src="/images/discord.png"
+                    alt="Discord Logo"
+                    className="w-7 h-5"
+                  />
+                </a>
                 </div>
               </button>
             </div>
@@ -236,14 +249,13 @@ export default function ModernTechLanding() {
       {/* Services Section */}
       <section className="relative z-10 container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-2xl font-pixel font-bold mb-4">
-            About Our{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Services
-            </span>
+          <h2 className="text-2xl font-pixel font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Layanan <br/> {' '}
+            <span className="text-white">Pixel Learn
+              </span>
           </h2>
           <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            Discover our comprehensive range of development services designed to bring your ideas to life
+            Temukan beragam layanan pengembangan kami yang dirancang untuk mewujudkan ide ide Anda menjadi kenyataan.
           </p>
         </div>
         
@@ -279,7 +291,7 @@ export default function ModernTechLanding() {
                 
                 {/* Learn More Link */}
                 <button className="group/link inline-flex items-center text-blue-500 dark:text-blue-400 hover:text-blue-400 dark:hover:text-blue-300 transition-colors mb-6">
-                  <span>Learn More</span>
+                  <a href="/404">Baca Selengkapnya</a>
                   <ChevronRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" />
                 </button>
                 
@@ -290,14 +302,14 @@ export default function ModernTechLanding() {
                       <div className="p-1 rounded-full bg-gray-200 dark:bg-gray-700">
                         <Eye className="w-4 h-4" />
                       </div>
-                      <span>{service.views} Views</span>
+                      <span>{service.views} Dilihat</span>
                     </div>
                     <div className="w-px h-4 bg-gray-300 dark:bg-gray-600"></div>
                     <div className="flex items-center space-x-2">
                       <div className="p-1 rounded-full bg-gray-200 dark:bg-gray-700">
                         <MessageCircle className="w-4 h-4" />
                       </div>
-                      <span>{service.comments} Comments</span>
+                      <span>{service.comments} Komentar</span>
                     </div>
                   </div>
                 </div>
@@ -319,6 +331,7 @@ export default function ModernTechLanding() {
           }
         }
       `}</style>
+      <BackToTopButton />
     </div>
   );
 }

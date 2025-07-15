@@ -5,6 +5,7 @@ import fs, { readFileSync } from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
 import { Metadata } from "next";
+import BackToTopButton from '@/components/BackToTopButton'
 
 interface BlogType {
   slug: string; 
@@ -60,6 +61,7 @@ const BlogList = () => {
           </div>
         ))}
       </div>
+      <BackToTopButton />
     </div>
   );
 };

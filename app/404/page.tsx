@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import { ArrowLeft, Construction, Clock, Code, Users, Play, Award, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import BackToTopButton from '@/components/BackToTopButton'
 
 export default function NotFound() {
   const { theme } = useTheme()
@@ -302,6 +303,7 @@ export default function NotFound() {
           ))}
         </div>
       </section>
+        <BackToTopButton/>
     </div>
   )
 }

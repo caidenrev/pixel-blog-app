@@ -215,11 +215,11 @@ export default function About() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <button className="group px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
+          <button className="group px-8 py-4 font-pixel bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold text-sm lg:text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">
             <a href="/blog">Jelajahi Course</a>
             <ArrowRight className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
-          <button className="px-8 py-4 border-2 border-gray-700 text-gray-300 rounded-2xl font-bold text-lg hover:bg-gray-800 transition-all duration-300">
+          <button className="px-8 py-4 font-pixel border-2 border-gray-700 text-gray-300 rounded-2xl font-bold text-md hover:bg-gray-800 transition-all duration-300">
             <a href="https://discord.gg/DwgAJbkE">Join Discord</a>
           </button>
         </div>
