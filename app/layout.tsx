@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google"
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import SiteConfig from "@/config/site";
 import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer"; // tambahkan import Footer
-import { ThemeProvider } from "@/components/theme-provider"
+import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
-})
+});
 
 export const metadata: Metadata = {
   title: SiteConfig.title,
@@ -36,9 +37,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-        <NavBar />
+          <NavBar />
           {children}
-        <Footer />
+          <Footer />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
