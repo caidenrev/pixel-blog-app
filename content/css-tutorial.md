@@ -2,7 +2,7 @@
 title: CSS Tutorial
 slug: css-tutorial
 description: CSS Tutorial Basic Dengan Pembahasan Mengenai Flexbox, Grid, and animations.
-imageUrl: https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
+imageUrl: https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210203171024/CSSTutorial.png
 ---
 
 # Tutorial CSS: Panduan Komprehensif

@@ -25,6 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-p-20 scroll-smooth">
+      <head>
+        <link rel="icon" type="image/png" href="/images/logo pixel.png" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",

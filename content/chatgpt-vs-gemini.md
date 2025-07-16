@@ -2,6 +2,7 @@
 title: ChatGPT vs. Gemini - Sebuah Analisis Perbandingan
 slug: chatgpt-vs-gemini
 description: Jelajahi perbedaan antara ChatGPT dan Gemini, dua model AI percakapan terkemuka, dan pahami fitur serta kemampuan unik mereka.
+imageUrl: https://techlasi.com/wp-content/uploads/2023/12/Googles-Gemini-vs-GPT-4-1054x587.jpg
 ---
 # ChatGPT vs. Gemini: Sebuah Analisis Perbandingan
 
