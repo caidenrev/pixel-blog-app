@@ -2,7 +2,7 @@
 title: MERN vs. MEAN - Perbandingan
 slug: mern-vs-mean
 description: Jelajahi perbedaan antara stack MERN dan MEAN untuk menentukan mana yang lebih cocok untuk kebutuhan pengembangan web Anda.
-imageUrl: [https://makeanapplike.com/wp-content/uploads/2022/03/MEAN-vs-MERN-stack-1024x536.png]
+imageUrl: https://makeanapplike.com/wp-content/uploads/2022/03/MEAN-vs-MERN-stack-1024x536.png
 ---
 # Perbandingan MERN vs. MEAN: ⚖️
 

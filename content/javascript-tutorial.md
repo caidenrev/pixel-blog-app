@@ -2,7 +2,7 @@
 title: JavaScript Tutorial
 slug: javascript-tutorial
 description: Panduan komprehensif untuk belajar JavaScript, dari dasar-dasar sintaks dan fungsi hingga topik lanjutan seperti pemrograman asinkron dan kerangka kerja.
-imageUrl: [https://codeandhack.com/wp-content/uploads/2020/11/JavaScript-programming-language.jpg]
+imageUrl: https://codeandhack.com/wp-content/uploads/2020/11/JavaScript-programming-language.jpg
 ---
 # Tutorial JavaScript: Panduan Komprehensif 📜
 

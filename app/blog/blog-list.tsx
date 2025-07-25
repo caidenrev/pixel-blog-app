@@ -44,7 +44,7 @@ const BlogList = ({ blogs }: BlogListProps) => {
             Our Courses
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover comprehensive coding tutorials and enhance your programming skills
+            Discovers comprehensive coding tutorials and enhance your programming skills
           </p>
         </div>
 
