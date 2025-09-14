@@ -2,22 +2,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Search, Eye, MessageCircle, Code, Smartphone, Cloud, Play, ChevronRight, Star, Zap, Users, Award } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useSearchParams } from 'next/navigation';
 import BackToTopButton from '@/components/BackToTopButton';
+import FeaturedPosts from '@/components/FeaturedPosts';
+import AuthModal from '@/components/auth/AuthModal';
 
 const strings = ['Tailwind CSS', 'React', 'TypeScript', 'Next.js'];
 
 export default function ModernTechLanding() {
   const { theme } = useTheme();
+  const searchParams = useSearchParams();
   const [mounted, setMounted] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [currentStringIndex, setCurrentStringIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
 
   // Fix hydration issue
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Handle URL parameters for auth modal
+  useEffect(() => {
+    if (mounted) {
+      const authParam = searchParams.get('auth');
+      if (authParam === 'login' || authParam === 'register') {
+        setAuthMode(authParam);
+        setAuthModalOpen(true);
+      }
+    }
+  }, [searchParams, mounted]);
 
   // Typing animation
   useEffect(() => {
@@ -46,6 +63,14 @@ export default function ModernTechLanding() {
   if (!mounted) {
     return null;
   }
+
+  const handleCloseModal = () => {
+    setAuthModalOpen(false);
+    // Remove auth parameter from URL
+    const url = new URL(window.location.href);
+    url.searchParams.delete('auth');
+    window.history.replaceState({}, '', url.pathname);
+  };
 
   const services = [
     {
@@ -156,7 +181,6 @@ export default function ModernTechLanding() {
               </button>
               <button className="font-pixel text-xs lg:text-sm group border bg-blue-600 border-gray-300 dark:border-gray-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 dark:hover:bg-indigo-600 transition-all text-gray-900 dark:text-white">
                 <div className="flex items-center space-x-2">
-
                   <a href="https://discord.gg/DwgAJbkE"
                   className="inline-flex items-center gap-2 text-white hover:transform hover:scale-105 transition-all"
                   target="_blank"
@@ -318,6 +342,22 @@ export default function ModernTechLanding() {
           ))}
         </div>
       </section>
+
+      {/* Featured Posts Section */}
+      <section className="relative z-10 container mx-auto px-4 py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-2xl font-pixel font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Featured <br/> {' '}
+            <span className="text-white">Tutorials
+            </span>
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+            Pilih tutorial terbaik yang telah dipilih khusus untuk membantu perjalanan belajar coding Anda.
+          </p>
+        </div>
+        
+        <FeaturedPosts />
+      </section>
       
       <style jsx>{`
         @keyframes fade-in-up {
@@ -331,6 +371,14 @@ export default function ModernTechLanding() {
           }
         }
       `}</style>
+      
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={handleCloseModal}
+        defaultMode={authMode}
+      />
+      
       <BackToTopButton />
     </div>
   );

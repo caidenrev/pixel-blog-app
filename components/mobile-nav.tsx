@@ -2,7 +2,10 @@ import React from 'react'
 import Link from 'next/link'
 import { Button, buttonVariants } from './ui/button'
 import { usePathname } from 'next/navigation'
-import { Home, User, BookOpen, Mail, LogIn, UserPlus } from 'lucide-react'
+import { Home, User, BookOpen, Mail, LogIn, UserPlus, LogOut } from 'lucide-react'
+import { useAuth } from '@/lib/auth-context'
+import { supabase, User as UserType } from '@/lib/supabase'
+import { useEffect, useState } from 'react'
 
 interface MobileNavProps {
   onItemClick?: () => void
@@ -10,6 +13,8 @@ interface MobileNavProps {
 
 const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
   const pathname = usePathname()
+  const { user, signOut } = useAuth()
+  const [userData, setUserData] = useState<UserType | null>(null)
   
   const navItems = [
     { href: '/', label: 'Home', icon: Home },
@@ -17,6 +22,30 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
     { href: '/blog', label: 'Courses', icon: BookOpen },
     { href: '/contact', label: 'Contact', icon: Mail },
   ]
+
+  // Fetch user data to check role
+  useEffect(() => {
+    if (user) {
+      const fetchUserData = async () => {
+        try {
+          const { data, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('id', user.id)
+            .single()
+
+          if (!error && data) {
+            setUserData(data)
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error)
+        }
+      }
+      fetchUserData()
+    } else {
+      setUserData(null)
+    }
+  }, [user])
 
   return (
     <div className="flex flex-col space-y-6 mt-6">
@@ -49,23 +78,49 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
 
       {/* Auth Buttons */}
       <div className="space-y-3">
-        <Link
-          href="/404"
-          onClick={onItemClick}
-          className={`${buttonVariants({ variant: "outline" })} w-full justify-start space-x-2 hover:bg-muted hover:text-blue-400 transition-colors duration-300`}
-        >
-          <LogIn className="w-4 h-4" />
-          <span>Login</span>
-        </Link>
-        
-        <Link
-          href="/404"
-          onClick={onItemClick}
-          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
-        >
-          <UserPlus className="w-4 h-4" />
-          <span>Sign Up</span>
-        </Link>
+        {user ? (
+          <>
+            <Link
+              href={userData?.role === 'admin' ? "/admin" : "/dashboard"}
+              onClick={onItemClick}
+              className={`${buttonVariants({ variant: "outline" })} w-full justify-start space-x-2 hover:bg-muted hover:text-blue-400 transition-colors duration-300`}
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>{userData?.role === 'admin' ? 'Admin Dashboard' : 'Dashboard'}</span>
+            </Link>
+            
+            <button
+              onClick={() => {
+                signOut()
+                onItemClick?.()
+              }}
+              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Logout</span>
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              href="/?auth=login"
+              onClick={onItemClick}
+              className={`${buttonVariants({ variant: "outline" })} w-full justify-start space-x-2 hover:bg-muted hover:text-blue-400 transition-colors duration-300`}
+            >
+              <LogIn className="w-4 h-4" />
+              <span>Login</span>
+            </Link>
+            
+            <Link
+              href="/?auth=register"
+              onClick={onItemClick}
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+            >
+              <UserPlus className="w-4 h-4" />
+              <span>Sign Up</span>
+            </Link>
+          </>
+        )}
       </div>
 
       {/* Additional Info */}

@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import fs from "fs";
-import matter from "gray-matter";
+import { supabase } from "@/lib/supabase";
 import BlogList, { BlogType } from "./blog-list";
 
 export const metadata: Metadata = {
@@ -8,25 +7,33 @@ export const metadata: Metadata = {
   description: 'A comprehensive blog for coders of all levels...',
 };
 
-const getBlogs = (): BlogType[] => {
-  const dirContent = fs.readdirSync("content", "utf-8");
-  return dirContent.map((file) => {
-    const fileContent = fs.readFileSync(`content/${file}`, "utf-8");
-    const { data } = matter(fileContent);
-    return {
-      slug: data.slug,
-      title: data.title,
-      description: data.description,
-      imageUrl: data?.imageUrl,
-      date: data?.date,
-      category: data?.category,
-      readTime: data?.readTime,
-      tags: data?.tags,
-    };
-  });
+const getBlogs = async (): Promise<BlogType[]> => {
+  try {
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('published', true)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    return data?.map((post) => ({
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      imageUrl: post.image_url,
+      date: post.published_at || post.created_at,
+      category: 'Tutorial',
+      readTime: '5 min read',
+      tags: post.tags || [],
+    })) || [];
+  } catch (error) {
+    console.error('Error fetching blogs:', error);
+    return [];
+  }
 };
 
-export default function BlogPage() {
-  const blogs = getBlogs();
+export default async function BlogPage() {
+  const blogs = await getBlogs();
   return <BlogList blogs={blogs} />;
 }

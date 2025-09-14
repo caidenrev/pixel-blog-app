@@ -6,6 +6,7 @@ import SiteConfig from "@/config/site";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/lib/auth-context";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next"
 
@@ -41,11 +42,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
-          {children}
-          <Footer />
-          <Analytics />
-          <SpeedInsights />
+          <AuthProvider>
+            <NavBar />
+            {children}
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -16,18 +16,46 @@ import LoadingBar from 'react-top-loading-bar'
 import { usePathname } from 'next/navigation'
 import MobileNav from './mobile-nav'
 import { useTheme } from 'next-themes'
+import { useAuth } from '@/lib/auth-context'
+import { supabase, User } from '@/lib/supabase'
 
 const NavBar = () => {
     const [progress, setProgress] = useState(0)
     const [isOpen, setIsOpen] = useState(false)
     const [mounted, setMounted] = useState(false)
+    const [userData, setUserData] = useState<User | null>(null)
     const pathname = usePathname()
     const { theme, setTheme } = useTheme()
+    const { user, signOut } = useAuth()
 
     // Fix hydration issue
     useEffect(() => {
         setMounted(true)
     }, [])
+
+    // Fetch user data to check role
+    useEffect(() => {
+        if (user) {
+            const fetchUserData = async () => {
+                try {
+                    const { data, error } = await supabase
+                        .from('users')
+                        .select('*')
+                        .eq('id', user.id)
+                        .single()
+
+                    if (!error && data) {
+                        setUserData(data)
+                    }
+                } catch (error) {
+                    console.error('Error fetching user data:', error)
+                }
+            }
+            fetchUserData()
+        } else {
+            setUserData(null)
+        }
+    }, [user])
 
     // Page change effect
     useEffect(() => {
@@ -135,18 +163,37 @@ const NavBar = () => {
                             {theme === 'dark' ? '☀️' : '🌙'}
                         </button>
                     )}
-                    <Link 
-                        href="/404" 
-                        className={`${buttonVariants({ variant: "ghost" })} hover:text-blue-400 transition-colors duration-300`}
-                    >
-                        Login
-                    </Link>
-                    <Link 
-                        href="/404" 
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                    >
-                        Sign Up
-                    </Link>
+                    {user ? (
+                        <>
+                            <Link 
+                                href={userData?.role === 'admin' ? "/admin" : "/dashboard"} 
+                                className={`${buttonVariants({ variant: "ghost" })} hover:text-blue-400 transition-colors duration-300`}
+                            >
+                                {userData?.role === 'admin' ? 'Admin Dashboard' : 'Dashboard'}
+                            </Link>
+                            <button 
+                                onClick={signOut}
+                                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link 
+                                href="/?auth=login" 
+                                className={`${buttonVariants({ variant: "ghost" })} hover:text-blue-400 transition-colors duration-300`}
+                            >
+                                Login
+                            </Link>
+                            <Link 
+                                href="/?auth=register" 
+                                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                            >
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
                 </div>
 
                 {/* Mobile Actions */}

@@ -7,15 +7,14 @@ import remarkRehype from "remark-rehype"
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from "rehype-stringify"
 import rehypeHighlight from "rehype-highlight"
-import matter from "gray-matter"
-import fs from "fs"
-import path from "path" // <-- Perbaikan 1: Import modul 'path'
+import { supabase } from '@/lib/supabase'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import { rehypePrettyCode } from 'rehype-pretty-code'
 import { transformerCopyButton } from '@rehype-pretty/transformers'
 import { Metadata, ResolvingMetadata } from 'next'
 import BackToTopButton from '@/components/BackToTopButton'
 import MobileTableOfContents from '@/components/MobileTableOfContents'
+import { notFound } from 'next/navigation'
 
 type Props = {
   params: { slug: string, title: string, description: string }
@@ -23,6 +22,18 @@ type Props = {
 }
 
 export default async function BlogPage({ params }: { params: { slug: string } }) {
+  // Fetch post from database
+  const { data: post, error } = await supabase
+    .from('blog_posts')
+    .select('*')
+    .eq('slug', params.slug)
+    .eq('published', true)
+    .single()
+
+  if (error || !post) {
+    notFound()
+  }
+
   const processor = unified()
     .use(remarkParse)
     .use(remarkRehype) 
@@ -39,12 +50,7 @@ export default async function BlogPage({ params }: { params: { slug: string } })
     })
     .use(rehypeAutolinkHeadings)
 
-  // Perbaikan 2: Menggunakan path absolut untuk membaca file
-  const filePath = path.join(process.cwd(), 'content', `${params.slug}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const {data, content} = matter(fileContent)
-
-  const htmlContent = (await processor.process(content)).toString()
+  const htmlContent = (await processor.process(post.content)).toString()
   
   // Extract headings for TOC
   const extractHeadings = (html: string) => {
@@ -74,24 +80,22 @@ export default async function BlogPage({ params }: { params: { slug: string } })
       <div className='py-8 border-b border-gray-200 dark:border-gray-700 mb-8'>
         <div className='text-center'>
           <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight'>
-            {data.title}
+            {post.title}
           </h1>
-          {data.description && (
+          {post.description && (
             <p className='text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
-              {data.description}
+              {post.description}
             </p>
           )}
-          {data.date && (
-            <div className='mt-4 text-sm text-gray-500 dark:text-gray-400'>
-              <time dateTime={data.date}>
-                {new Date(data.date).toLocaleDateString('id-ID', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </time>
-            </div>
-          )}
+          <div className='mt-4 text-sm text-gray-500 dark:text-gray-400'>
+            <time dateTime={post.published_at || post.created_at}>
+              {new Date(post.published_at || post.created_at).toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </div>
         </div>
       </div>
 
@@ -153,27 +157,37 @@ export default async function BlogPage({ params }: { params: { slug: string } })
 }  
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  // Perbaikan 3: Menggunakan path absolut juga untuk metadata
-  const filePath = path.join(process.cwd(), 'content', `${params.slug}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf-8");
-  const {data} = matter(fileContent)
-  
-  return {
-    title: `${data.title} - Pixel Society`, // Ganti sesuai nama website Anda
-    description: data.description,
-    openGraph: {
-      title: data.title,
-      description: data.description,
-      type: 'article',
-      publishedTime: data.date,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: data.title,
-      description: data.description,
+    { params, searchParams }: Props,
+    parent: ResolvingMetadata
+  ): Promise<Metadata> {
+    // Fetch post from database
+    const { data: post, error } = await supabase
+      .from('blog_posts')
+      .select('*')
+      .eq('slug', params.slug)
+      .eq('published', true)
+      .single()
+
+    if (error || !post) {
+      return {
+        title: 'Post Not Found - Pixel Society',
+        description: 'The requested blog post could not be found.',
+      }
+    }
+    
+    return {
+      title: `${post.title} - Pixel Society`,
+      description: post.description,
+      openGraph: {
+        title: post.title,
+        description: post.description,
+        type: 'article',
+        publishedTime: post.published_at || post.created_at,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.description,
+      }
     }
   }
-}
