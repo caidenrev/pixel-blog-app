@@ -6,6 +6,7 @@ import { Home, User, BookOpen, Mail, LogIn, UserPlus, LogOut } from 'lucide-reac
 import { useAuth } from '@/lib/auth-context'
 import { supabase, User as UserType } from '@/lib/supabase'
 import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 interface MobileNavProps {
   onItemClick?: () => void
@@ -15,6 +16,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
   const pathname = usePathname()
   const { user, signOut } = useAuth()
   const [userData, setUserData] = useState<UserType | null>(null)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
   
   const navItems = [
     { href: '/', label: 'Home', icon: Home },
@@ -22,6 +25,11 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
     { href: '/blog', label: 'Courses', icon: BookOpen },
     { href: '/contact', label: 'Contact', icon: Mail },
   ]
+
+  // Fix hydration issue
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Fetch user data to check role
   useEffect(() => {
@@ -46,6 +54,12 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
       setUserData(null)
     }
   }, [user])
+
+  const toggleTheme = () => {
+    if (mounted) {
+      setTheme(theme === 'dark' ? 'light' : 'dark')
+    }
+  }
 
   return (
     <div className="flex flex-col space-y-6 mt-6">
@@ -72,6 +86,25 @@ const MobileNav: React.FC<MobileNavProps> = ({ onItemClick }) => {
           )
         })}
       </div>
+
+      {/* Divider */}
+      <div className="border-t border-border"></div>
+
+      {/* Theme Toggle */}
+      {mounted && (
+        <div className="flex items-center justify-center">
+          <button 
+            onClick={toggleTheme}
+            className="p-3 rounded-full hover:bg-muted/50 transition-colors duration-300 text-2xl flex items-center justify-center w-full"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+            <span className="ml-2 text-sm font-medium">
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </span>
+          </button>
+        </div>
+      )}
 
       {/* Divider */}
       <div className="border-t border-border"></div>
