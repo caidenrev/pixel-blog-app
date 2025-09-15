@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import { Search, Eye, MessageCircle, Code, Smartphone, Cloud, Play, ChevronRight, Star, Zap, Users, Award } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useSearchParams } from 'next/navigation';
@@ -9,32 +9,50 @@ import AuthModal from '@/components/auth/AuthModal';
 
 const strings = ['Tailwind CSS', 'React', 'TypeScript', 'Next.js'];
 
+// Component that uses useSearchParams
+function AuthHandler() {
+  const searchParams = useSearchParams();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+
+  // Handle URL parameters for auth modal
+  useEffect(() => {
+    const authParam = searchParams.get('auth');
+    if (authParam === 'login' || authParam === 'register') {
+      setAuthMode(authParam);
+      setAuthModalOpen(true);
+    }
+  }, [searchParams]);
+
+  const handleCloseModal = () => {
+    setAuthModalOpen(false);
+    // Remove auth parameter from URL
+    const url = new URL(window.location.href);
+    url.searchParams.delete('auth');
+    window.history.replaceState({}, '', url.pathname);
+  };
+
+  return (
+    <AuthModal
+      isOpen={authModalOpen}
+      onClose={handleCloseModal}
+      defaultMode={authMode}
+    />
+  );
+}
+
 export default function ModernTechLanding() {
   const { theme } = useTheme();
-  const searchParams = useSearchParams();
   const [mounted, setMounted] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [currentStringIndex, setCurrentStringIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
 
   // Fix hydration issue
   useEffect(() => {
     setMounted(true);
   }, []);
-
-  // Handle URL parameters for auth modal
-  useEffect(() => {
-    if (mounted) {
-      const authParam = searchParams.get('auth');
-      if (authParam === 'login' || authParam === 'register') {
-        setAuthMode(authParam);
-        setAuthModalOpen(true);
-      }
-    }
-  }, [searchParams, mounted]);
 
   // Typing animation
   useEffect(() => {
@@ -63,14 +81,6 @@ export default function ModernTechLanding() {
   if (!mounted) {
     return null;
   }
-
-  const handleCloseModal = () => {
-    setAuthModalOpen(false);
-    // Remove auth parameter from URL
-    const url = new URL(window.location.href);
-    url.searchParams.delete('auth');
-    window.history.replaceState({}, '', url.pathname);
-  };
 
   const services = [
     {
@@ -373,11 +383,9 @@ export default function ModernTechLanding() {
       `}</style>
       
       {/* Auth Modal */}
-      <AuthModal
-        isOpen={authModalOpen}
-        onClose={handleCloseModal}
-        defaultMode={authMode}
-      />
+      <Suspense fallback={null}>
+        <AuthHandler />
+      </Suspense>
       
       <BackToTopButton />
     </div>

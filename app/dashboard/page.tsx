@@ -47,7 +47,7 @@ export default function UserDashboard() {
           
           // Check if this is the admin user by email
           const isAdmin = user.email === 'admin@pixelblog.com'
-          const userRole = isAdmin ? 'admin' : 'user'
+          const userRole: 'admin' | 'user' = isAdmin ? 'admin' : 'user'
           
           const { error: insertError } = await supabase
             .from('users')
