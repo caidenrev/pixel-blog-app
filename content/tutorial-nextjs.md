@@ -2,7 +2,7 @@
 title: Tutorial Next.js
 slug: tutorial-nextjs
 description: Panduan komprehensif untuk belajar Next.js, dari instalasi hingga fitur canggih seperti SSR dan API Routes.
-imageUrl: https://somwpkzlplaovldnfahk.supabase.co/storage/v1/object/public/heropy.dev_posts/n7JHmI/main.jpg
+imageUrl: /images/nextjs.jpg
 ---
 # Tutorial Next.js: Framework JS Yang Powerfull Pada Masanya. 
 
