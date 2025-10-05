@@ -9,7 +9,14 @@ import Link from "next/link";
 import BackToTopButton from "@/components/BackToTopButton";
 import { Search, Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 
+declare module 'react' {
+  interface JSX {
+    IntrinsicElements: any;
+  }
+}
+
 export interface BlogType {
+  id?: string;
   slug: string;
   title: string;
   description: string;
@@ -18,6 +25,11 @@ export interface BlogType {
   category?: string;
   readTime?: string;
   tags?: string[];
+  content?: string;
+  published?: boolean;
+  author_id?: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 interface BlogListProps {

@@ -8,7 +8,7 @@ Selamat datang di Tutorial Python Ultimate\! Baik Anda seorang pemula atau penge
 
 -----
 
-## Pengenalan Python 🌐
+## Pengenalan Python 
 
 **Python** adalah bahasa pemrograman tingkat tinggi yang **serbaguna**, mudah dipelajari, dan digunakan. Bahasa ini banyak diadopsi dalam pengembangan web, analisis data, kecerdasan buatan, otomatisasi, dan banyak lagi. Sintaks Python yang bersih dan pustaka yang kuat menjadikannya pilihan yang sangat baik bagi pemula maupun programmer berpengalaman.
 
@@ -20,7 +20,7 @@ Selamat datang di Tutorial Python Ultimate\! Baik Anda seorang pemula atau penge
 
 -----
 
-## Menyiapkan Lingkungan 🛠️
+## Menyiapkan Lingkungan 
 
 Untuk mulai membuat kode dengan Python, Anda perlu menyiapkan lingkungan pengembangan Anda. Ini melibatkan instalasi Python di mesin Anda dan memilih Integrated Development Environment (IDE) atau editor teks untuk menulis kode.
 
@@ -38,7 +38,7 @@ Untuk mulai membuat kode dengan Python, Anda perlu menyiapkan lingkungan pengemb
 
 -----
 
-## Dasar-dasar Python 🧱
+## Dasar-dasar Python 
 
 Memahami sintaks dasar Python sangat penting. Bagian ini mencakup variabel, tipe data, dan operasi dasar.
 
@@ -74,7 +74,7 @@ apakah_benar = True and False
 
 -----
 
-## Alur Kontrol 🚦
+## Alur Kontrol 
 
 Pernyataan alur kontrol menentukan jalur eksekusi program Anda. Python menyediakan pernyataan kondisional dan perulangan untuk mengelola alur.
 
@@ -109,7 +109,7 @@ while hitungan < 5:
 
 -----
 
-## Fungsi 🧩
+## Fungsi 
 
 Fungsi merangkum kode ke dalam blok yang dapat digunakan kembali. Di Python, fungsi didefinisikan menggunakan kata kunci `def`.
 
@@ -135,7 +135,7 @@ print(kuadrat(4))
 
 -----
 
-## Modul dan Paket 📦
+## Modul dan Paket 
 
 Sifat modular Python memungkinkan Anda mengatur kode ke dalam modul dan paket. Modul hanyalah file Python, sedangkan paket adalah kumpulan modul.
 
@@ -155,7 +155,7 @@ print(math.sqrt(16))
 
 -----
 
-## Struktur Data 🗃️
+## Struktur Data 
 
 Python memiliki struktur data bawaan yang merupakan kunci untuk pemrograman yang efisien. Bagian ini mencakup list, tuple, dictionary, dan set.
 
@@ -201,7 +201,7 @@ print(angka_unik)  # Output: {1, 2, 3, 4}
 
 -----
 
-## Penanganan File 📁
+## Penanganan File 
 
 Python menyediakan fungsi bawaan untuk bekerja dengan file. Anda dapat membaca dari, menulis ke, dan menambahkan data ke file.
 
@@ -232,7 +232,7 @@ with open("file.txt", "a") as file:
 
 -----
 
-## Penanganan Kesalahan ⚠️
+## Penanganan Kesalahan 
 
 Menangani kesalahan sangat penting untuk membangun program yang tangguh. Python menggunakan eksepsi untuk mengelola kesalahan dengan baik.
 
@@ -260,7 +260,7 @@ finally:
 
 -----
 
-## Pemrograman Berorientasi Objek (PBO) 🏛️
+## Pemrograman Berorientasi Objek (PBO) 
 
 **Pemrograman Berorientasi Objek (PBO)** memungkinkan Anda memodelkan entitas dunia nyata menggunakan kelas dan objek.
 
@@ -304,7 +304,7 @@ print(kucing_saya.buat_suara())  # Output: Meong!
 
 -----
 
-## Python Tingkat Lanjut 🚀
+## Python Tingkat Lanjut 
 
 Selami fitur-fitur Python tingkat lanjut seperti generator, decorator, dan manajer konteks.
 
@@ -356,7 +356,7 @@ with open("file.txt", "r") as file:
 
 -----
 
-## Pustaka Eksternal 📚
+## Pustaka Eksternal 
 
 Kekuatan Python terletak pada ekosistem pustakanya yang luas. Beberapa pustaka paling populer meliputi:
 

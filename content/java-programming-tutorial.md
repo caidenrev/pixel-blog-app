@@ -4,13 +4,13 @@ slug: java-programming-tutorial
 description: Panduan komprehensif untuk belajar pemrograman Java dari dasar hingga topik lanjutan.
 imageUrl: https://blog.educalix.com/wp-content/uploads/2023/05/4987312_8657_2-1024x576.jpg
 ---
-# Tutorial Pemrograman Java: Panduan Komprehensif ☕
+# Tutorial Pemrograman Java: Panduan Komprehensif 
 
 Selamat datang di tutorial pemrograman Java yang komprehensif ini\! Baik Anda seorang pemula maupun yang ingin meningkatkan keterampilan Java Anda, panduan ini akan memandu Anda melalui dasar-dasar dan membantu Anda mendalami konsep yang lebih canggih seiring kemajuan Anda.
 
 -----
 
-## Pengenalan Java 🌐
+## Pengenalan Java 
 
 **Java** adalah bahasa pemrograman tingkat tinggi yang populer dan dikenal karena **portabilitas**, keandalan, dan fleksibilitasnya. Java banyak digunakan dalam aplikasi enterprise, pengembangan Android, pengembangan web, dan banyak lagi.
 
@@ -22,7 +22,7 @@ Selamat datang di tutorial pemrograman Java yang komprehensif ini\! Baik Anda se
 
 -----
 
-## Menyiapkan Java 🛠️
+## Menyiapkan Java 
 
 Sebelum Anda mulai membuat kode di Java, Anda perlu menyiapkan lingkungan pengembangan Anda. Berikut caranya:
 
@@ -32,7 +32,7 @@ Sebelum Anda mulai membuat kode di Java, Anda perlu menyiapkan lingkungan pengem
 
 -----
 
-## Dasar-dasar Java 🧱
+## Dasar-dasar Java 
 
 Dengan lingkungan Anda yang sudah siap, mari kita selami dasar-dasarnya. Di bagian ini, kita akan membahas:
 
@@ -90,7 +90,7 @@ public class Main {
 
 -----
 
-## Java Tingkat Menengah 📈
+## Java Tingkat Menengah 
 
 Setelah Anda menguasai dasar-dasarnya, saatnya menjelajahi fitur-fitur Java yang lebih menengah:
 
@@ -165,7 +165,7 @@ public class Main {
 
 -----
 
-## Java Tingkat Lanjut 🚀
+## Java Tingkat Lanjut 
 
 Setelah mendapatkan kepercayaan diri dengan konsep tingkat menengah, Anda sekarang dapat menjelajahi fitur-fitur Java tingkat lanjut:
 
@@ -231,7 +231,7 @@ public class Main {
 
 -----
 
-## Kesimpulan ✅
+## Kesimpulan 
 
 Selamat telah menyelesaikan tutorial pemrograman Java ini\! Anda telah membahas semuanya, mulai dari dasar-dasar Java hingga konsep lanjutan seperti penanganan eksepsi dan *multithreading*. Java adalah bahasa yang kuat dan serbaguna yang dapat digunakan untuk berbagai macam aplikasi, jadi teruslah berlatih dan membangun proyek untuk meningkatkan keterampilan Anda.
 

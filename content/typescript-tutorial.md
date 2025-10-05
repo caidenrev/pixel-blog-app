@@ -4,13 +4,13 @@ slug: typescript-tutorial
 description: Panduan komprehensif untuk belajar TypeScript dari dasar hingga topik lanjutan.
 imageUrl: https://www.orientsoftware.com/Themes/Content/Images/blog/2023-11-13/typescript-introduction.jpg
 ---
-## Pengenalan TypeScript 🔷
+## Pengenalan TypeScript 
 
 **TypeScript** adalah superset **JavaScript** yang diketik secara statis dan kuat, yang menambahkan tipe statis opsional, *interface*, dan banyak lagi ke dalam bahasa tersebut. TypeScript dirancang untuk membantu pengembang membangun aplikasi skala besar dengan keandalan yang lebih tinggi dan pemeliharaan kode yang lebih mudah.
 
 -----
 
-## Mengapa Belajar TypeScript? 🤔
+## Mengapa Belajar TypeScript? 
 
 1.  **Keamanan Tipe (Type Safety)**: Menangkap kesalahan lebih awal selama pengembangan.
 2.  **Dukungan IDE yang Lebih Baik**: Fitur *autocompletion*, navigasi, dan *refactoring* yang lebih baik.
@@ -19,7 +19,7 @@ imageUrl: https://www.orientsoftware.com/Themes/Content/Images/blog/2023-11-13/t
 
 -----
 
-## Memulai 🚀
+## Memulai 
 
 ### Menginstal TypeScript
 
@@ -63,7 +63,7 @@ TypeScript memperkenalkan beberapa tipe dasar yang mungkin sudah familiar bagi p
 
 -----
 
-## Tipe Lanjutan 📈
+## Tipe Lanjutan 
 
 ### Interface
 
@@ -116,7 +116,7 @@ let output = identitas<string>("stringSaya");
 
 -----
 
-## Kesimpulan ✅
+## Kesimpulan 
 
 **TypeScript** adalah alat penting untuk pengembangan web modern, terutama untuk aplikasi skala besar. Fitur keamanan tipenya, bersama dengan integrasi yang mulus dengan JavaScript, menjadikannya pilihan populer di kalangan pengembang. Mulailah memasukkan TypeScript ke dalam proyek Anda hari ini untuk merasakan manfaat penuhnya\!
 

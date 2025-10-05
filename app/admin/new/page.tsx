@@ -38,10 +38,30 @@ export default function NewPostPage() {
   }, [title])
 
   const handleSave = async (publish: boolean = false) => {
-    if (!user || !title || !content) return
+    if (!user || !title || !content) {
+      alert('Please fill in all required fields (title and content)')
+      return
+    }
+
+    if (!slug) {
+      alert('Please ensure the title generates a valid slug')
+      return
+    }
 
     setSaving(true)
     try {
+      const { data: existingPost, error: checkError } = await supabase
+        .from('blog_posts')
+        .select('slug')
+        .eq('slug', slug)
+        .single()
+
+      if (existingPost) {
+        alert('A post with this slug already exists. Please modify the title.')
+        setSaving(false)
+        return
+      }
+
       const { error } = await supabase
         .from('blog_posts')
         .insert({
@@ -55,6 +75,8 @@ export default function NewPostPage() {
           featured: false,
           tags,
           published_at: publish ? new Date().toISOString() : null,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
         })
 
       if (error) throw error

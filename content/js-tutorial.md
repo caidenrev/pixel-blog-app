@@ -8,7 +8,7 @@ imageUrl: https://miro.medium.com/v2/resize:fit:836/1*dbggYEdKfBg-4SqRqrkFow.png
 
 -----
 
-## Daftar Isi 📋
+## Daftar Isi 
 
 1.  **Pengenalan JavaScript**
 2.  **Variabel dan Tipe Data**
@@ -23,7 +23,7 @@ imageUrl: https://miro.medium.com/v2/resize:fit:836/1*dbggYEdKfBg-4SqRqrkFow.png
 
 -----
 
-## Pengenalan JavaScript 🌐
+## Pengenalan JavaScript 
 
 **JavaScript** adalah bahasa pemrograman yang memungkinkan Anda mengimplementasikan fitur-fitur kompleks di halaman web, seperti:
 
@@ -33,7 +33,7 @@ imageUrl: https://miro.medium.com/v2/resize:fit:836/1*dbggYEdKfBg-4SqRqrkFow.png
 
 -----
 
-## Variabel dan Tipe Data 📦
+## Variabel dan Tipe Data 
 
 Di JavaScript, Anda dapat menyimpan data dalam variabel:
 
@@ -53,7 +53,7 @@ Ada berbagai tipe data di JavaScript, termasuk:
 
 -----
 
-## Struktur Kontrol 🚦
+## Struktur Kontrol 
 
 Struktur kontrol memungkinkan Anda menentukan alur program Anda. Yang paling umum adalah:
 
@@ -73,7 +73,7 @@ if (usia > 18) {
 
 -----
 
-## Fungsi 🧩
+## Fungsi 
 
 Fungsi memungkinkan Anda mengelompokkan kode ke dalam blok yang dapat digunakan kembali:
 
@@ -93,7 +93,7 @@ Fungsi bisa berupa:
 
 -----
 
-## Objek dan Array 🗃️
+## Objek dan Array 
 
 JavaScript menggunakan objek dan array untuk menyimpan data yang kompleks:
 
@@ -109,7 +109,7 @@ let angka = [1, 2, 3, 4, 5];
 
 -----
 
-## Manipulasi DOM 🖱️
+## Manipulasi DOM 
 
 **Document Object Model (DOM)** merepresentasikan halaman web Anda. Anda dapat memanipulasinya menggunakan JavaScript:
 
@@ -119,7 +119,7 @@ document.getElementById('elemenSaya').innerText = 'Halo, Dunia!';
 
 -----
 
-## Penanganan Event 👆
+## Penanganan Event 
 
 Anda dapat merespons event pengguna seperti klik atau penekanan tombol:
 
@@ -131,7 +131,7 @@ document.getElementById('tombolSaya').addEventListener('click', function() {
 
 -----
 
-## JavaScript Asinkron ⏳
+## JavaScript Asinkron 
 
 Pemrograman asinkron memungkinkan Anda melakukan tugas seperti pengambilan data tanpa membekukan halaman web:
 
@@ -143,7 +143,7 @@ fetch('https://api.example.com/data')
 
 -----
 
-## Fitur ES6 ✨
+## Fitur ES6 
 
 ES6 memperkenalkan banyak fitur baru ke JavaScript, seperti:
 
@@ -155,7 +155,7 @@ ES6 memperkenalkan banyak fitur baru ke JavaScript, seperti:
 
 -----
 
-## Praktik Terbaik JavaScript 👍
+## Praktik Terbaik JavaScript 
 
 Untuk menulis JavaScript yang bersih dan efisien, ikuti praktik terbaik ini:
 

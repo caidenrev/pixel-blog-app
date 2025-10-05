@@ -4,6 +4,12 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/lib/auth-context'
 import { supabase, BlogPost } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
+
+declare module 'react' {
+  interface JSX {
+    IntrinsicElements: any;
+  }
+}
 import MarkdownEditor from '@/components/editor/MarkdownEditor'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -87,12 +93,19 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           featured,
           tags,
           published_at: publish && !published ? new Date().toISOString() : post.published_at,
+          updated_at: new Date().toISOString()
         })
         .eq('id', params.id)
 
       if (error) throw error
 
-      router.push('/admin')
+      // Force revalidation of the blog pages
+      await fetch('/api/revalidate?path=/blog', { method: 'POST' });
+      await fetch(`/api/revalidate?path=/blogpost/${slug}`, { method: 'POST' });
+      
+      // Redirect with router.refresh() to ensure fresh data
+      router.refresh();
+      router.push('/admin');
     } catch (error) {
       console.error('Error saving post:', error)
       alert('Error saving post. Please try again.')

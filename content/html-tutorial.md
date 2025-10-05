@@ -4,7 +4,7 @@ slug: html-tutorial
 description: Panduan komprehensif untuk belajar HTML, dari dasar-dasar penyusunan halaman web hingga elemen dan semantik.
 imageURl: [https://www.designveloper.com/wp-content/uploads/2022/07/HTML5.jpg]
 ---
-## Pengenalan HTML 🌐
+## Pengenalan HTML 
 
 **HTML** adalah bahasa markup standar yang digunakan untuk membuat halaman web. HTML menyusun konten di halaman menggunakan elemen-elemen seperti judul, paragraf, gambar, dan tautan.
 
@@ -16,7 +16,7 @@ imageURl: [https://www.designveloper.com/wp-content/uploads/2022/07/HTML5.jpg]
 
 -----
 
-## Menyiapkan HTML 🛠️
+## Menyiapkan HTML 
 
 Untuk membuat file HTML, yang Anda butuhkan hanyalah editor teks dan browser web. Berikut cara menyiapkan lingkungan Anda:
 
@@ -26,7 +26,7 @@ Untuk membuat file HTML, yang Anda butuhkan hanyalah editor teks dan browser web
 
 -----
 
-## Dasar-dasar HTML 🧱
+## Dasar-dasar HTML 
 
 Mari kita mulai dengan dasar-dasarnya. Di bagian ini, Anda akan belajar tentang struktur dasar dokumen HTML dan cara menggunakan elemen HTML umum seperti judul, paragraf, dan tautan.
 
@@ -67,7 +67,7 @@ Gunakan tag `<a>` untuk membuat hyperlink yang memungkinkan pengguna bernavigasi
 
 -----
 
-## HTML Tingkat Menengah 📈
+## HTML Tingkat Menengah 
 
 Setelah Anda memahami dasar-dasarnya, Anda dapat mulai menambahkan elemen yang lebih kompleks ke halaman HTML Anda. Bagian ini mencakup gambar, daftar, tabel, dan formulir.
 
@@ -136,7 +136,7 @@ Formulir digunakan untuk mengumpulkan masukan dari pengguna. Tag `<form>` berisi
 
 -----
 
-## HTML Tingkat Lanjut 🚀
+## HTML Tingkat Lanjut 
 
 Sekarang setelah Anda nyaman dengan HTML tingkat menengah, mari kita selami beberapa topik lanjutan seperti HTML semantik, elemen media, dan fitur HTML5.
 
@@ -203,7 +203,7 @@ HTML5 membawa banyak fitur dan perbaikan baru, termasuk tipe input baru, validas
 
 -----
 
-## Kesimpulan ✅
+## Kesimpulan 
 
 Selamat telah menyelesaikan tutorial HTML ini\! Anda telah mempelajari dasar-dasar HTML, topik menengah seperti tabel dan formulir, serta konsep lanjutan seperti HTML semantik dan fitur HTML5. Dengan HTML sebagai fondasi Anda, Anda dapat mulai membangun situs web dan beralih ke teknologi lain seperti CSS dan JavaScript untuk meningkatkan keterampilan pengembangan web Anda.
 

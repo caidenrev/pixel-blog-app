@@ -4,13 +4,13 @@ slug: tutorial-nextjs
 description: Panduan komprehensif untuk belajar Next.js, dari instalasi hingga fitur canggih seperti SSR dan API Routes.
 imageUrl: [https://hiu.vn/wp-content/uploads/2023/05/1644864897-next-framework.jpg]
 ---
-# Tutorial Next.js: Framework JS Yang Powerfull Pada Masanya. 🚀
+# Tutorial Next.js: Framework JS Yang Powerfull Pada Masanya. 
 
 Selamat datang di tutorial Next.js\! **Next.js** adalah kerangka kerja (framework) React yang populer untuk membangun aplikasi web modern yang siap produksi. Panduan ini akan memandu Anda melalui dasar-dasar hingga fitur-fitur canggih yang membuat Next.js begitu kuat.
 
 -----
 
-## Pengenalan Next.js 🌐
+## Pengenalan Next.js 
 
 **Next.js** adalah kerangka kerja React yang tidak hanya memungkinkan Anda membangun antarmuka pengguna (UI) yang interaktif, tetapi juga menyediakan fitur-fitur bawaan untuk rendering sisi server, pembuatan situs statis, dan banyak lagi. Ini menyederhanakan banyak aspek kompleks dari pengembangan web modern.
 
@@ -23,7 +23,7 @@ Selamat datang di tutorial Next.js\! **Next.js** adalah kerangka kerja (framewor
 
 -----
 
-## Menyiapkan Proyek Next.js 🛠️
+## Menyiapkan Proyek Next.js 
 
 Memulai proyek Next.js sangatlah mudah. Anda hanya perlu menjalankan satu perintah di terminal Anda. Pastikan Anda sudah menginstal Node.js.
 
@@ -41,7 +41,7 @@ Memulai proyek Next.js sangatlah mudah. Anda hanya perlu menjalankan satu perint
 
 -----
 
-## Konsep Dasar Next.js 🧱
+## Konsep Dasar Next.js 
 
 ### 1\. Routing Berbasis File
 
@@ -77,7 +77,7 @@ export default Button;
 
 -----
 
-## Pengambilan Data (Data Fetching) 📈
+## Pengambilan Data (Data Fetching) 
 
 Next.js menawarkan metode yang kuat untuk mengambil data sebelum halaman di-render.
 
@@ -119,7 +119,7 @@ export async function getServerSideProps(context) {
 
 -----
 
-## API Routes ⚙️
+## API Routes 
 
 Anda dapat dengan mudah membuat endpoint API sebagai fungsi *serverless* di dalam direktori `pages/api`.
 
@@ -134,7 +134,7 @@ export default function handler(req, res) {
 
 -----
 
-## Kesimpulan ✅
+## Kesimpulan 
 
 **Next.js** adalah kerangka kerja yang sangat kuat yang menyederhanakan pengembangan aplikasi React modern. Dengan fitur-fitur seperti **SSR**, **SSG**, **routing berbasis file**, dan **API routes**, Anda dapat membangun aplikasi web yang cepat, SEO-friendly, dan dapat diskalakan dengan lebih mudah.
 

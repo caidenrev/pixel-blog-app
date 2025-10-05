@@ -4,13 +4,13 @@ slug: python-tutorial
 description: Panduan komprehensif untuk belajar Python dari dasar hingga topik lanjutan.
 imageUrl: /images/piton.jpg
 ---
-# Tutorial Python: Panduan Komprehensif 🐍
+# Tutorial Python: Panduan Komprehensif 
 
 Selamat datang di tutorial Python yang komprehensif ini\! Baik Anda seorang pemula maupun yang ingin menyegarkan kembali keterampilan Python Anda, panduan ini akan membawa Anda melalui dasar-dasar dan secara bertahap memperkenalkan topik-topik lanjutan.
 
 -----
 
-## Pengenalan Python 🌐
+## Pengenalan Python 
 
 **Python** adalah bahasa pemrograman **tingkat tinggi** yang **serbaguna**, mudah dipelajari, dan menyenangkan untuk digunakan. Python banyak digunakan dalam pengembangan web, analisis data, *machine learning*, dan otomatisasi, menjadikannya alat penting bagi pengembang modern.
 
@@ -32,7 +32,7 @@ Sebelum masuk ke kode, Anda perlu menyiapkan Python di mesin Anda. Ikuti langkah
 
 -----
 
-## Dasar-dasar Python 🧱
+## Dasar-dasar Python 
 
 Sekarang setelah Anda menyiapkan Python, mari kita mulai dengan dasar-dasarnya. Di bagian ini, kita akan membahas:
 
@@ -73,7 +73,7 @@ print(sapa("Alice"))
 
 -----
 
-## Python Tingkat Menengah 📈
+## Python Tingkat Menengah 
 
 Setelah menguasai dasar-dasarnya, saatnya menjelajahi topik yang lebih lanjut, seperti:
 
@@ -115,7 +115,7 @@ except ZeroDivisionError:
 
 -----
 
-## Python Tingkat Lanjut 🚀
+## Python Tingkat Lanjut 
 
 Sekarang setelah Anda nyaman dengan konsep tingkat menengah, mari kita selami beberapa topik Python tingkat lanjut:
 
@@ -172,7 +172,7 @@ for angka in hitung_hingga(5):
 
 -----
 
-## Kesimpulan ✅
+## Kesimpulan 
 
 Selamat telah berhasil menyelesaikan tutorial Python ini\! Anda telah membahas segalanya mulai dari dasar hingga topik lanjutan. Teruslah berlatih, dan jangan ragu untuk menjelajahi ekosistem pustaka dan kerangka kerja Python yang luas.
 

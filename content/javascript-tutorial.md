@@ -4,13 +4,13 @@ slug: javascript-tutorial
 description: Panduan komprehensif untuk belajar JavaScript, dari dasar-dasar sintaks dan fungsi hingga topik lanjutan seperti pemrograman asinkron dan kerangka kerja.
 imageUrl: https://codeandhack.com/wp-content/uploads/2020/11/JavaScript-programming-language.jpg
 ---
-# Tutorial JavaScript: Panduan Komprehensif 📜
+# Tutorial JavaScript: Panduan Komprehensif 
 
 Selamat datang di tutorial JavaScript yang komprehensif ini\! Baik Anda baru dalam pemrograman atau ingin meningkatkan keterampilan Anda, panduan ini akan mencakup segalanya mulai dari dasar-dasar sintaks JavaScript hingga konsep dan teknik yang lebih canggih.
 
 -----
 
-## Pengenalan JavaScript 🌐
+## Pengenalan JavaScript 
 
 **JavaScript** adalah bahasa pemrograman serbaguna yang utamanya digunakan untuk membuat konten dinamis dan interaktif di situs web. Ini adalah teknologi penting untuk pengembangan web, bersama dengan HTML dan CSS.
 
@@ -22,7 +22,7 @@ Selamat datang di tutorial JavaScript yang komprehensif ini\! Baik Anda baru dal
 
 -----
 
-## Menyiapkan JavaScript 🛠️
+## Menyiapkan JavaScript 
 
 Untuk mulai menggunakan JavaScript, Anda memerlukan browser web dan editor teks. Kode JavaScript dapat disertakan dalam file HTML atau dalam file `.js` terpisah.
 
@@ -72,7 +72,7 @@ alert('Halo, Dunia!');
 
 -----
 
-## Dasar-dasar JavaScript 🧱
+## Dasar-dasar JavaScript 
 
 Mari kita mulai dengan hal-hal mendasar. Bagian ini mencakup variabel, tipe data, operator, dan fungsi dasar.
 
@@ -123,7 +123,7 @@ console.log(sapa("Alice")); // Output: Halo, Alice!
 
 -----
 
-## JavaScript Tingkat Menengah 📈
+## JavaScript Tingkat Menengah 
 
 Setelah Anda nyaman dengan dasar-dasarnya, Anda dapat menjelajahi topik yang lebih menengah seperti objek, array, dan manipulasi DOM.
 
@@ -185,7 +185,7 @@ document.getElementById("tombolSaya").addEventListener("click", function() {
 
 -----
 
-## JavaScript Tingkat Lanjut 🚀
+## JavaScript Tingkat Lanjut 
 
 Di bagian ini, Anda akan mendalami topik yang lebih canggih seperti pemrograman asinkron, *closure*, dan fitur JavaScript modern.
 
@@ -292,7 +292,7 @@ console.log(sapa("Alice")); // Output: Halo, Alice!
 
 -----
 
-## Kesimpulan ✅
+## Kesimpulan 
 
 Selamat telah menyelesaikan tutorial JavaScript ini\! Anda telah mempelajari dasar-dasar JavaScript, konsep menengah seperti objek dan manipulasi DOM, serta topik lanjutan seperti pemrograman asinkron dan fitur modern. JavaScript adalah bahasa yang kuat yang membuka banyak kemungkinan untuk pengembangan web, jadi teruslah berlatih dan menjelajahi fitur-fitur baru.
 
